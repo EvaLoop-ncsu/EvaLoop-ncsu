@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - EVALOOP</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Comprehensive experimental results and analysis from EVALOOP LLM robustness evaluation">
+    <meta name="keywords" content="LLM results, performance analysis, ASL scores, experimental data">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <style>
+        .results-header {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+        }
+        
+        .small-chart-container {
+            position: relative;
+            height: 250px;
+        }
+        
+        .results-nav {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 80px;
+            z-index: 10;
+        }
+        
+        .results-nav .nav-link {
+            color: #6b7280;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .results-nav .nav-link.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .data-table-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .performance-item {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .download-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .insight-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-tag {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 0.25rem 1rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .comparison-matrix {
+            overflow-x: auto;
+        }
+        
+        .comparison-matrix table {
+            min-width: 800px;
+        }
+        
+        .heatmap-cell {
+            position: relative;
+            padding: 0.75rem;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .results-nav {
+                position: static;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <span class="text-primary">EVAL</span><span class="text-secondary">OOP</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="method.html">Method</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="results.html">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link btn btn-outline-primary btn-sm px-3" href="https://github.com/evaloop" target="_blank">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="results-header">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3">Experimental Results</h1>
+            <p class="lead mb-0">
+                Comprehensive analysis and insights from EVALOOP evaluation
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Quick Navigation -->
+        <div class="results-nav">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#overview">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#performance">Performance Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#category">Category Breakdown</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#trends">Trends & Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#download">Download Data</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Overview Section -->
+        <section id="overview" class="mb-5">
+            <h2 class="mb-4">Evaluation Overview</h2>
+            
+            <div class="row g-4 mb-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-box text-center">
+                        <i class="bi bi-cpu display-4 text-primary mb-3"></i>
+                        <div class="stat-value">47</div>
+                        <p class="text-muted mb-0">Models Tested</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box text-center">
+                        <i class="bi bi-file-code display-4 text-success mb-3"></i>
+                        <div class="stat-value">1,265</div>
+                        <p class="text-muted mb-0">Test Cases</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box text-center">
+                        <i class="bi bi-clock-history display-4 text-warning mb-3"></i>
+                        <div class="stat-value">2,847</div>
+                        <p class="text-muted mb-0">Hours of Testing</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box text-center">
+                        <i class="bi bi-database display-4 text-info mb-3"></i>
+                        <div class="stat-value">12.3</div>
+                        <p class="text-muted mb-0">TB Data Processed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Findings -->
+            <div class="insight-card">
+                <h4><i class="bi bi-lightbulb"></i> Key Findings</h4>
+                <ul class="mb-0">
+                    <li>GPT-4-Turbo achieves the highest ASL score of 92.3, demonstrating superior robustness</li>
+                    <li>Top 5 models all achieve ASL scores above 80, indicating strong programming capabilities</li>
+                    <li>Significant performance gap (26.6 points) between top and median models</li>
+                    <li>Edge case handling remains the primary differentiator among top-tier models</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Performance Analysis Section -->
+        <section id="performance" class="mb-5">
+            <h2 class="mb-4">Performance Analysis</h2>
+            
+            <!-- Main Performance Chart -->
+            <div class="chart-card">
+                <h5 class="mb-3">ASL Score Distribution</h5>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-card">
+                        <h5 class="mb-3">Success Rate vs ASL Score</h5>
+                        <div class="small-chart-container">
+                            <canvas id="scatterChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="chart-card">
+                        <h5 class="mb-3">Execution Time Analysis</h5>
+                        <div class="small-chart-container">
+                            <canvas id="timeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Breakdown Section -->
+        <section id="category" class="mb-5">
+            <h2 class="mb-4">Category Breakdown</h2>
+            
+            <!-- Filter Tags -->
+            <div class="filter-tags">
+                <span class="filter-tag active" data-category="all">All Categories</span>
+                <span class="filter-tag" data-category="algorithms">Algorithms</span>
+                <span class="filter-tag" data-category="datastructures">Data Structures</span>
+                <span class="filter-tag" data-category="systemdesign">System Design</span>
+                <span class="filter-tag" data-category="debugging">Debugging</span>
+            </div>
+
+            <!-- Category Performance Grid -->
+            <div class="performance-grid" id="categoryGrid">
+                <div class="performance-item">
+                    <h5>Algorithms</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="display-6 fw-bold text-primary">88.5%</span>
+                        <i class="bi bi-graph-up text-success fs-3"></i>
+                    </div>
+                    <p class="text-muted mb-0">Average Success Rate</p>
+                </div>
+                <div class="performance-item">
+                    <h5>Data Structures</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="display-6 fw-bold text-primary">86.2%</span>
+                        <i class="bi bi-diagram-3 text-info fs-3"></i>
+                    </div>
+                    <p class="text-muted mb-0">Average Success Rate</p>
+                </div>
+                <div class="performance-item">
+                    <h5>System Design</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="display-6 fw-bold text-primary">82.7%</span>
+                        <i class="bi bi-cpu text-warning fs-3"></i>
+                    </div>
+                    <p class="text-muted mb-0">Average Success Rate</p>
+                </div>
+                <div class="performance-item">
+                    <h5>Debugging</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="display-6 fw-bold text-primary">85.3%</span>
+                        <i class="bi bi-bug text-danger fs-3"></i>
+                    </div>
+                    <p class="text-muted mb-0">Average Success Rate</p>
+                </div>
+            </div>
+
+            <!-- Category Comparison Chart -->
+            <div class="chart-card">
+                <h5 class="mb-3">Top Models Performance by Category</h5>
+                <div class="chart-container">
+                    <canvas id="categoryComparisonChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Heatmap -->
+            <div class="data-table-wrapper">
+                <h5 class="mb-3">Performance Heatmap</h5>
+                <div class="comparison-matrix">
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Algorithms</th>
+                                <th>Data Structures</th>
+                                <th>System Design</th>
+                                <th>Debugging</th>
+                                <th>Overall ASL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="heatmapTable">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trends & Insights Section -->
+        <section id="trends" class="mb-5">
+            <h2 class="mb-4">Trends & Insights</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-card">
+                        <h5 class="mb-3">Performance Trends by Organization</h5>
+                        <div class="small-chart-container">
+                            <canvas id="orgTrendsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="chart-card">
+                        <h5 class="mb-3">Model Size vs Performance</h5>
+                        <div class="small-chart-container">
+                            <canvas id="sizePerformanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistical Analysis -->
+            <div class="data-table-wrapper mt-4">
+                <h5 class="mb-3">Statistical Summary</h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Mean</th>
+                                <th>Median</th>
+                                <th>Std Dev</th>
+                                <th>Min</th>
+                                <th>Max</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ASL Score</td>
+                                <td>76.8</td>
+                                <td>78.2</td>
+                                <td>8.4</td>
+                                <td>58.3</td>
+                                <td>92.3</td>
+                            </tr>
+                            <tr>
+                                <td>Success Rate (%)</td>
+                                <td>79.4</td>
+                                <td>80.6</td>
+                                <td>9.1</td>
+                                <td>61.2</td>
+                                <td>94.7</td>
+                            </tr>
+                            <tr>
+                                <td>Avg Time (s)</td>
+                                <td>1.32</td>
+                                <td>1.28</td>
+                                <td>0.24</td>
+                                <td>0.87</td>
+                                <td>1.98</td>
+                            </tr>
+                            <tr>
+                                <td>Robustness Score</td>
+                                <td>74.5</td>
+                                <td>75.8</td>
+                                <td>8.7</td>
+                                <td>56.2</td>
+                                <td>89.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Insights -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-arrow-up-circle text-success"></i> Strengths
+                            </h5>
+                            <ul class="mb-0">
+                                <li>Strong performance on standard algorithms</li>
+                                <li>Excellent code syntax accuracy</li>
+                                <li>Good handling of common patterns</li>
+                                <li>Fast execution times for simple tasks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-exclamation-triangle text-warning"></i> Areas for Improvement
+                            </h5>
+                            <ul class="mb-0">
+                                <li>Edge case handling needs refinement</li>
+                                <li>Complex system design challenges</li>
+                                <li>Memory optimization in large datasets</li>
+                                <li>Debugging of subtle logical errors</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section">
+            <h2 class="mb-4">Download Data</h2>
+            <p class="lead mb-4">
+                Access the complete dataset and detailed results from our evaluation
+            </p>
+            
+            <div class="row g-3">
+                <div class="col-md-3 col-6">
+                    <button class="btn btn-primary w-100" onclick="downloadData('full')">
+                        <i class="bi bi-download"></i> Full Dataset
+                        <small class="d-block">JSON (2.3 MB)</small>
+                    </button>
+                </div>
+                <div class="col-md-3 col-6">
+                    <button class="btn btn-outline-primary w-100" onclick="downloadData('summary')">
+                        <i class="bi bi-file-earmark-csv"></i> Summary CSV
+                        <small class="d-block">CSV (156 KB)</small>
+                    </button>
+                </div>
+                <div class="col-md-3 col-6">
+                    <button class="btn btn-outline-primary w-100" onclick="downloadData('detailed')">
+                        <i class="bi bi-file-earmark-spreadsheet"></i> Detailed Results
+                        <small class="d-block">XLSX (892 KB)</small>
+                    </button>
+                </div>
+                <div class="col-md-3 col-6">
+                    <button class="btn btn-outline-primary w-100" onclick="downloadData('plots')">
+                        <i class="bi bi-images"></i> Plots & Figures
+                        <small class="d-block">ZIP (4.7 MB)</small>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <i class="bi bi-info-circle"></i>
+                All data is provided under the MIT License. Please cite our paper when using these results.
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="mb-3">EVALOOP</h5>
+                    <p class="text-muted">
+                        Advancing LLM evaluation through comprehensive robustness testing
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="mb-3">
+                        <a href="https://github.com/evaloop" class="text-white me-3">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                        <a href="#" class="text-white me-3">
+                            <i class="bi bi-twitter"></i> Twitter
+                        </a>
+                        <a href="about.html" class="text-white">
+                            <i class="bi bi-envelope"></i> Contact
+                        </a>
+                    </div>
+                    <p class="text-muted mb-0">
+                        © 2024 EVALOOP Research Team. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/results.js"></script>
+</body>
+</html>

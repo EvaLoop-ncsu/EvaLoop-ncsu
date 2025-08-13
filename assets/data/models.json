@@ -1,0 +1,174 @@
+{
+  "lastUpdated": "2024-01-20",
+  "evaluationMetrics": {
+    "primaryMetric": "ASL",
+    "secondaryMetrics": ["Success Rate", "Average Time", "Robustness Score"]
+  },
+  "models": [
+    {
+      "rank": 1,
+      "name": "GPT-4-Turbo",
+      "organization": "OpenAI",
+      "aslScore": 92.3,
+      "successRate": 94.7,
+      "avgTime": 1.23,
+      "robustnessScore": 89.5,
+      "testDate": "2024-01-15",
+      "trend": "up",
+      "details": {
+        "totalTests": 1265,
+        "passed": 1197,
+        "failed": 68,
+        "categories": {
+          "algorithms": 95.2,
+          "dataStructures": 93.8,
+          "systemDesign": 88.4,
+          "debugging": 91.7
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "name": "Claude-3-Opus",
+      "organization": "Anthropic",
+      "aslScore": 89.7,
+      "successRate": 91.2,
+      "avgTime": 1.18,
+      "robustnessScore": 87.3,
+      "testDate": "2024-01-15",
+      "trend": "up",
+      "details": {
+        "totalTests": 1265,
+        "passed": 1154,
+        "failed": 111,
+        "categories": {
+          "algorithms": 92.1,
+          "dataStructures": 90.5,
+          "systemDesign": 86.9,
+          "debugging": 89.3
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "name": "Gemini-Ultra",
+      "organization": "Google",
+      "aslScore": 87.4,
+      "successRate": 89.8,
+      "avgTime": 1.35,
+      "robustnessScore": 85.1,
+      "testDate": "2024-01-15",
+      "trend": "stable",
+      "details": {
+        "totalTests": 1265,
+        "passed": 1136,
+        "failed": 129,
+        "categories": {
+          "algorithms": 90.3,
+          "dataStructures": 88.7,
+          "systemDesign": 84.2,
+          "debugging": 87.6
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "name": "GPT-4",
+      "organization": "OpenAI",
+      "aslScore": 85.2,
+      "successRate": 87.5,
+      "avgTime": 1.45,
+      "robustnessScore": 83.8,
+      "testDate": "2024-01-15",
+      "trend": "down",
+      "details": {
+        "totalTests": 1265,
+        "passed": 1107,
+        "failed": 158,
+        "categories": {
+          "algorithms": 88.4,
+          "dataStructures": 86.9,
+          "systemDesign": 82.7,
+          "debugging": 85.3
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "name": "Claude-3-Sonnet",
+      "organization": "Anthropic",
+      "aslScore": 82.9,
+      "successRate": 85.3,
+      "avgTime": 1.08,
+      "robustnessScore": 81.2,
+      "testDate": "2024-01-15",
+      "trend": "up",
+      "details": {
+        "totalTests": 1265,
+        "passed": 1079,
+        "failed": 186,
+        "categories": {
+          "algorithms": 85.7,
+          "dataStructures": 84.2,
+          "systemDesign": 80.1,
+          "debugging": 83.4
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "name": "Gemini-Pro",
+      "organization": "Google",
+      "aslScore": 79.6,
+      "successRate": 82.1,
+      "avgTime": 1.12,
+      "robustnessScore": 78.3,
+      "testDate": "2024-01-15",
+      "trend": "stable"
+    },
+    {
+      "rank": 7,
+      "name": "Llama-3-70B",
+      "organization": "Meta",
+      "aslScore": 76.8,
+      "successRate": 79.4,
+      "avgTime": 1.67,
+      "robustnessScore": 75.2,
+      "testDate": "2024-01-15",
+      "trend": "up"
+    },
+    {
+      "rank": 8,
+      "name": "Mixtral-8x7B",
+      "organization": "Mistral AI",
+      "aslScore": 73.2,
+      "successRate": 76.8,
+      "avgTime": 1.54,
+      "robustnessScore": 71.9,
+      "testDate": "2024-01-15",
+      "trend": "up"
+    },
+    {
+      "rank": 9,
+      "name": "GPT-3.5-Turbo",
+      "organization": "OpenAI",
+      "aslScore": 68.4,
+      "successRate": 71.2,
+      "avgTime": 0.98,
+      "robustnessScore": 67.1,
+      "testDate": "2024-01-15",
+      "trend": "stable"
+    },
+    {
+      "rank": 10,
+      "name": "CodeLlama-34B",
+      "organization": "Meta",
+      "aslScore": 65.7,
+      "successRate": 68.9,
+      "avgTime": 1.43,
+      "robustnessScore": 64.3,
+      "testDate": "2024-01-15",
+      "trend": "down"
+    }
+  ]
+}
