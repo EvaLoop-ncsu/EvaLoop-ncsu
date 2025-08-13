@@ -65,41 +65,41 @@ function initCounterAnimation() {
 
 // Load Top Models Data
 function loadTopModels() {
-    // Sample data - in production, this would come from an API or JSON file
+    // Updated data from EVALOOP paper - showing top 5 models
     const topModels = [
         {
             rank: 1,
-            name: "GPT-4-Turbo",
-            aslScore: 92.3,
-            successRate: 94.7,
+            name: "o3-mini",
+            aslScore: 7.457,
+            successRate: 85.2,
             trend: "up"
         },
         {
             rank: 2,
-            name: "Claude-3-Opus",
-            aslScore: 89.7,
-            successRate: 91.2,
+            name: "Qwen2.5-Coder-32B",
+            aslScore: 7.385,
+            successRate: 82.5,
             trend: "up"
         },
         {
             rank: 3,
-            name: "Gemini-Ultra",
-            aslScore: 87.4,
-            successRate: 89.8,
+            name: "gpt-4.1",
+            aslScore: 7.356,
+            successRate: 84.1,
             trend: "stable"
         },
         {
             rank: 4,
-            name: "GPT-4",
-            aslScore: 85.2,
-            successRate: 87.5,
-            trend: "down"
+            name: "o4-mini",
+            aslScore: 7.320,
+            successRate: 83.5,
+            trend: "up"
         },
         {
             rank: 5,
-            name: "Claude-3-Sonnet",
-            aslScore: 82.9,
-            successRate: 85.3,
+            name: "gpt-4.1-mini",
+            aslScore: 7.291,
+            successRate: 82.3,
             trend: "up"
         }
     ];

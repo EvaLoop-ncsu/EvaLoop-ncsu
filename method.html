@@ -266,21 +266,21 @@
                             </p>
                         </div>
 
-                        <h3 class="mt-5 mb-3">Definition</h3>
+                                                <h3 class="mt-5 mb-3">Definition</h3>
                         <p>
                             The ASL metric quantifies model robustness by measuring the average number of sustainable 
                             loops before failure in the code generation-summarization cycle:
                         </p>
-
+                        
                         <div class="formula-box">
                             <code>
-                                ASL = Σ(i × i × Pass@1_i) / N<br>
+                                ASL = Σ(last_sustainable_loop²) / (N × max_loops)<br>
                                 <br>
                                 where:<br>
-                                - i = loop iteration number<br>
-                                - Pass@1_i = success rate at iteration i<br>
+                                - last_sustainable_loop = the last loop where the model succeeded<br>
                                 - N = total number of benchmark tasks<br>
-                                - Quadratic weighting (i²) emphasizes later-loop performance
+                                - max_loops = maximum number of loops tested (e.g., 10)<br>
+                                - Quadratic weighting (loop²) emphasizes later-loop performance
                             </code>
                         </div>
 
@@ -318,7 +318,7 @@
 
                         <h3 class="mt-5 mb-3">EVALOOP Example</h3>
                         <div class="code-example">
-<pre>// Example: EVALOOP process for task "check consecutive numbers"
+<pre>// Example: EVALOOP process for task "check consecutive numbers" (Max 10 loops)
 Loop 1:
   Input: "Write a function to check whether given list contains consecutive numbers"
   Code: def check_consecutive(lst): return sorted(lst) == list(range(min(lst), max(lst)+1))
@@ -339,8 +339,14 @@ Loop 4:
   Code: def check_consecutive(lst): return set(lst) == set(range(min(lst), max(lst)+1))
   Pass@1: ✗ (Test failed - handles duplicates incorrectly)
 
-ASL calculation for this task:
-ASL = (1² × 1 + 2² × 1 + 3² × 1 + 4² × 0) / 1 = 14</pre>
+Loops 5-10: Not reached (model failed at Loop 4)
+
+ASL contribution for this single task:
+Sustainable loops = 3 (failed at Loop 4)
+ASL = 3² / 10 = 9 / 10 = 0.9
+
+For full ASL score across N tasks:
+ASL = Σ(last_sustainable_loop²) / (N × max_loops)</pre>
                         </div>
                     </div>
                 </div>
