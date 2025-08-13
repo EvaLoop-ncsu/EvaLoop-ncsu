@@ -199,7 +199,7 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link btn btn-outline-primary btn-sm px-3" href="https://github.com/evaloop" target="_blank">
+                        <a class="nav-link btn btn-outline-primary btn-sm px-3" href="https://github.com/EvaLoop-ncsu" target="_blank">
                             <i class="bi bi-github"></i> GitHub
                         </a>
                     </li>
@@ -250,90 +250,97 @@
             <div class="tab-pane fade show active" id="asl" role="tabpanel">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <h2 class="mb-4">Average Success Level (ASL) Metric</h2>
+                        <h2 class="mb-4">Average number of Sustainable Loops (ASL) Metric</h2>
                         
                         <p class="lead mb-4">
-                            The ASL metric provides a comprehensive measure of LLM programming robustness by evaluating 
-                            performance across multiple difficulty levels and test scenarios.
+                            ASL (Average number of Sustainable Loops) measures LLM robustness in programming through 
+                            self-consistency evaluation using iterative code generation and summarization loops.
                         </p>
 
                         <div class="highlight-box">
                             <h5 class="mb-3"><i class="bi bi-lightbulb"></i> Key Innovation</h5>
                             <p class="mb-0">
-                                Unlike binary pass/fail metrics, ASL captures nuanced performance characteristics by 
-                                measuring success rates at different complexity levels, providing a more accurate 
-                                representation of model capabilities.
+                                EVALOOP exploits the natural duality between complementary software engineering tasks 
+                                (code generation and code summarization) within a self-contained feedback loop, providing 
+                                a unified metric for robustness without relying on external adversarial attacks.
                             </p>
                         </div>
 
                         <h3 class="mt-5 mb-3">Definition</h3>
                         <p>
-                            The Average Success Level (ASL) score is calculated by aggregating weighted success rates 
-                            across multiple test categories and difficulty levels:
+                            The ASL metric quantifies model robustness by measuring the average number of sustainable 
+                            loops before failure in the code generation-summarization cycle:
                         </p>
 
                         <div class="formula-box">
                             <code>
-                                ASL = Σ(wi × si × di) / Σ(wi × di)<br>
+                                ASL = Σ(i × i × Pass@1_i) / N<br>
                                 <br>
                                 where:<br>
-                                - wi = weight of test category i<br>
-                                - si = success rate in category i<br>
-                                - di = difficulty coefficient for category i
+                                - i = loop iteration number<br>
+                                - Pass@1_i = success rate at iteration i<br>
+                                - N = total number of benchmark tasks<br>
+                                - Quadratic weighting (i²) emphasizes later-loop performance
                             </code>
                         </div>
 
-                        <h3 class="mt-5 mb-3">Components</h3>
+                        <h3 class="mt-5 mb-3">Key Components</h3>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="metric-card">
-                                    <h5 class="text-primary">Success Rate (s)</h5>
-                                    <p>Percentage of test cases passed within each category</p>
+                                    <h5 class="text-primary">Code Generation</h5>
+                                    <p>LLM generates code from natural language specification</p>
+                                    <div class="metric-value">NL → Code</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="metric-card">
+                                    <h5 class="text-success">Code Summarization</h5>
+                                    <p>LLM summarizes code back to natural language</p>
+                                    <div class="metric-value">Code → NL</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="metric-card">
+                                    <h5 class="text-warning">Loop Iteration</h5>
+                                    <p>Number of sustainable transformation cycles</p>
+                                    <div class="metric-value">10+ loops</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="metric-card">
+                                    <h5 class="text-info">Pass@1 Metric</h5>
+                                    <p>Success rate at each iteration level</p>
                                     <div class="metric-value">0-100%</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="metric-card">
-                                    <h5 class="text-success">Difficulty Coefficient (d)</h5>
-                                    <p>Normalized complexity measure for each test category</p>
-                                    <div class="metric-value">0.5-2.0</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="metric-card">
-                                    <h5 class="text-warning">Category Weight (w)</h5>
-                                    <p>Importance factor assigned to each test category</p>
-                                    <div class="metric-value">0.1-1.0</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="metric-card">
-                                    <h5 class="text-info">Robustness Factor</h5>
-                                    <p>Additional penalty for edge case failures</p>
-                                    <div class="metric-value">0.8-1.0</div>
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="mt-5 mb-3">Calculation Example</h3>
+                        <h3 class="mt-5 mb-3">EVALOOP Example</h3>
                         <div class="code-example">
-<pre>// Example ASL calculation for a model
-categories = {
-    "algorithms": { weight: 0.3, success: 0.92, difficulty: 1.5 },
-    "data_structures": { weight: 0.25, success: 0.88, difficulty: 1.3 },
-    "system_design": { weight: 0.25, success: 0.85, difficulty: 1.8 },
-    "debugging": { weight: 0.2, success: 0.90, difficulty: 1.2 }
-}
+<pre>// Example: EVALOOP process for task "check consecutive numbers"
+Loop 1:
+  Input: "Write a function to check whether given list contains consecutive numbers"
+  Code: def check_consecutive(lst): return sorted(lst) == list(range(min(lst), max(lst)+1))
+  Pass@1: ✓ (Test passed)
 
-numerator = 0
-denominator = 0
+Loop 2:  
+  Input: "Function to determine if list forms consecutive sequence by comparing sorted to range"
+  Code: def check_consecutive(lst): return sorted(lst) == list(range(min(lst), max(lst)+1))
+  Pass@1: ✓ (Test passed)
 
-for category in categories:
-    numerator += category.weight * category.success * category.difficulty
-    denominator += category.weight * category.difficulty
+Loop 3:
+  Input: "Check if list has consecutive integers from minimum to maximum value"
+  Code: def check_consecutive(nums): return set(nums) == set(range(min(nums), max(nums)+1))
+  Pass@1: ✓ (Test passed)
 
-ASL = (numerator / denominator) * 100
-// Result: ASL = 88.7</pre>
+Loop 4:
+  Input: "Determine if list contains unbroken sequence of consecutive integers"
+  Code: def check_consecutive(lst): return set(lst) == set(range(min(lst), max(lst)+1))
+  Pass@1: ✗ (Test failed - handles duplicates incorrectly)
+
+ASL calculation for this task:
+ASL = (1² × 1 + 2² × 1 + 3² × 1 + 4² × 0) / 1 = 14</pre>
                         </div>
                     </div>
                 </div>
@@ -346,143 +353,111 @@ ASL = (numerator / denominator) * 100
                         <h2 class="mb-4">EVALOOP Evaluation Framework</h2>
                         
                         <p class="lead mb-4">
-                            Our comprehensive evaluation framework tests LLMs across diverse programming challenges 
-                            to assess real-world coding capabilities.
+                            EVALOOP exploits the natural duality between code generation and code summarization 
+                            tasks to create a self-contained feedback loop for robustness evaluation.
                         </p>
 
-                        <h3 class="mb-4">Evaluation Process</h3>
+                        <h3 class="mb-4">EVALOOP Process</h3>
                         
                         <div class="process-step" data-step="1">
-                            <h5>Test Suite Preparation</h5>
-                            <p>Curate diverse programming problems across multiple categories and difficulty levels</p>
+                            <h5>Initial Code Generation</h5>
+                            <p>Given a natural language specification, the LLM generates code solution</p>
                         </div>
 
                         <div class="process-step" data-step="2">
-                            <h5>Model Execution</h5>
-                            <p>Generate code solutions using each LLM with standardized prompts and parameters</p>
+                            <h5>Code Summarization</h5>
+                            <p>The generated code is summarized by the same LLM into a new specification</p>
                         </div>
 
                         <div class="process-step" data-step="3">
-                            <h5>Code Validation</h5>
-                            <p>Execute generated code against comprehensive test cases including edge cases</p>
+                            <h5>Loop Iteration</h5>
+                            <p>Use the new specification to generate code again, creating a feedback loop</p>
                         </div>
 
                         <div class="process-step" data-step="4">
-                            <h5>Performance Analysis</h5>
-                            <p>Measure success rates, execution time, and resource utilization</p>
+                            <h5>Functional Testing</h5>
+                            <p>Test generated code against original test cases to verify correctness</p>
                         </div>
 
                         <div class="process-step" data-step="5">
-                            <h5>ASL Calculation</h5>
-                            <p>Compute final ASL scores using weighted performance metrics</p>
+                            <h5>Loop Continuation</h5>
+                            <p>Continue the loop until generated code fails functional tests</p>
                         </div>
 
                         <div class="process-step" data-step="6">
-                            <h5>Results Aggregation</h5>
-                            <p>Compile rankings and generate detailed performance reports</p>
+                            <h5>ASL Calculation</h5>
+                            <p>Compute the average number of sustainable loops before failure</p>
                         </div>
 
-                        <h3 class="mt-5 mb-4">Test Categories</h3>
+                        <h3 class="mt-5 mb-4">Evaluation Benchmark</h3>
                         
-                        <div class="row g-3">
-                            <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto">
                                 <div class="card">
                                     <div class="card-header bg-primary text-white">
-                                        <h5 class="mb-0">Algorithms</h5>
+                                        <h5 class="mb-0">MBPP+ (Mostly Basic Python Problems Plus)</h5>
                                     </div>
                                     <div class="card-body">
-                                        <ul class="mb-0">
-                                            <li>Sorting & Searching</li>
-                                            <li>Dynamic Programming</li>
-                                            <li>Graph Algorithms</li>
-                                            <li>Recursion & Backtracking</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-success text-white">
-                                        <h5 class="mb-0">Data Structures</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="mb-0">
-                                            <li>Arrays & Strings</li>
-                                            <li>Trees & Graphs</li>
-                                            <li>Hash Tables</li>
-                                            <li>Heaps & Queues</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-warning text-dark">
-                                        <h5 class="mb-0">System Design</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="mb-0">
-                                            <li>Architecture Patterns</li>
-                                            <li>Database Design</li>
-                                            <li>API Development</li>
-                                            <li>Scalability Solutions</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-info text-white">
-                                        <h5 class="mb-0">Debugging</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="mb-0">
-                                            <li>Error Identification</li>
-                                            <li>Code Optimization</li>
-                                            <li>Memory Management</li>
-                                            <li>Performance Tuning</li>
-                                        </ul>
+                                        <p class="mb-3">
+                                            EVALOOP uses the MBPP+ benchmark, an enhanced version of the original MBPP dataset 
+                                            with additional test cases for more rigorous evaluation.
+                                        </p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6>Dataset Statistics:</h6>
+                                                <ul>
+                                                    <li>378 programming tasks</li>
+                                                    <li>Python function synthesis</li>
+                                                    <li>Natural language descriptions</li>
+                                                    <li>Multiple test assertions per task</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6>Evaluation Setup:</h6>
+                                                <ul>
+                                                    <li>Maximum 10 loops per task</li>
+                                                    <li>Pass@1 metric at each iteration</li>
+                                                    <li>Quadratic weighting (i²) for ASL</li>
+                                                    <li>Self-contained feedback loop</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="mt-5 mb-4">Evaluation Criteria</h3>
+                        <h3 class="mt-5 mb-4">Evaluation Metrics</h3>
                         
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Criterion</th>
-                                        <th>Weight</th>
+                                        <th>Metric</th>
+                                        <th>Formula</th>
                                         <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>Correctness</strong></td>
-                                        <td>40%</td>
-                                        <td>Code produces expected output for all test cases</td>
+                                        <td><strong>Pass@1</strong></td>
+                                        <td>Success / Total</td>
+                                        <td>Percentage of tasks passing all test cases in each loop</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Efficiency</strong></td>
-                                        <td>20%</td>
-                                        <td>Time and space complexity optimization</td>
+                                        <td><strong>Loop Count</strong></td>
+                                        <td>Max sustainable iterations</td>
+                                        <td>Number of successful transformations before failure</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Robustness</strong></td>
-                                        <td>20%</td>
-                                        <td>Handling edge cases and error conditions</td>
+                                        <td><strong>ASL Score</strong></td>
+                                        <td>Σ(i² × Pass@1_i) / N</td>
+                                        <td>Weighted average emphasizing sustained performance</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Code Quality</strong></td>
-                                        <td>15%</td>
-                                        <td>Readability, maintainability, and best practices</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Completeness</strong></td>
-                                        <td>5%</td>
-                                        <td>Fully addressing all requirements</td>
+                                        <td><strong>Degradation Rate</strong></td>
+                                        <td>ΔPass@1 / Loops</td>
+                                        <td>Performance drop across transformation cycles</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -505,52 +480,47 @@ ASL = (numerator / denominator) * 100
                         <h3 class="mb-3">Algorithm Pseudocode</h3>
                         
                         <div class="algorithm-block">
-<pre class="language-python"><code>Algorithm: EVALOOP_Evaluate(model, test_suite)
+<pre class="language-python"><code>Algorithm: EVALOOP(model, benchmark)
 ────────────────────────────────────────────────
 Input:  model - LLM to evaluate
-        test_suite - Collection of programming challenges
-Output: asl_score - Average Success Level score
+        benchmark - Collection of programming tasks (e.g., MBPP+)
+Output: ASL - Average number of Sustainable Loops
 
-1: Initialize results = {}
-2: Initialize total_weighted_score = 0
-3: Initialize total_weight = 0
+1: Initialize total_score = 0
+2: Initialize max_loops = 10
 
-4: for each category in test_suite:
-5:     category_results = []
-6:     
-7:     for each problem in category.problems:
-8:         // Generate solution
-9:         solution = model.generate_code(problem.prompt)
-10:        
-11:        // Validate solution
-12:        test_results = execute_tests(solution, problem.test_cases)
-13:        
-14:        // Calculate metrics
-15:        success_rate = count_passed(test_results) / len(test_results)
-16:        execution_time = measure_time(solution)
-17:        
-18:        // Apply robustness penalty for edge case failures
-19:        if failed_edge_cases(test_results):
-20:            success_rate *= ROBUSTNESS_PENALTY
-21:        
-22:        category_results.append({
-23:            'success': success_rate,
-24:            'time': execution_time
-25:        })
-26:    
-27:    // Calculate category score
-28:    category_score = mean(category_results.success)
-29:    weighted_score = category_score * category.weight * category.difficulty
-30:    
-31:    total_weighted_score += weighted_score
-32:    total_weight += category.weight * category.difficulty
-33:    
-34:    results[category.name] = category_score
+3: for each task in benchmark:
+4:     loop_count = 0
+5:     current_prompt = task.description
+6:     test_cases = task.test_cases
+7:     
+8:     for i in range(1, max_loops + 1):
+9:         // Step 1: Generate code from current prompt
+10:        generated_code = model.generate_code(current_prompt)
+11:        
+12:        // Step 2: Test the generated code
+13:        test_result = execute_tests(generated_code, test_cases)
+14:        
+15:        if test_result == PASS:
+16:            loop_count = i
+17:            
+18:            // Step 3: Summarize code to create new prompt
+19:            current_prompt = model.summarize_code(generated_code)
+20:            current_prompt += "\n" + task.assertion  // Keep test assertion
+21:        else:
+22:            break  // Exit loop on first failure
+23:    
+24:    // Calculate weighted score for this task
+25:    task_score = 0
+26:    for j in range(1, loop_count + 1):
+27:        task_score += j * j  // Quadratic weighting
+28:    
+29:    total_score += task_score
 
-35: // Calculate final ASL score
-36: asl_score = (total_weighted_score / total_weight) * 100
+30: // Calculate final ASL score
+31: ASL = total_score / len(benchmark)
 
-37: return asl_score, results</code></pre>
+32: return ASL</code></pre>
                         </div>
 
                         <h3 class="mt-5 mb-3">Key Functions</h3>
@@ -565,11 +535,11 @@ Output: asl_score - Average Success Level score
                                 <div id="func1" class="accordion-collapse collapse show" data-bs-parent="#functionsAccordion">
                                     <div class="accordion-body">
                                         <code class="d-block mb-2">function generate_code(prompt: string) → string</code>
-                                        <p>Invokes the LLM with a standardized prompt format to generate code solution.</p>
+                                        <p>Generates Python code solution from natural language specification.</p>
                                         <ul>
-                                            <li>Uses consistent temperature and max_tokens settings</li>
-                                            <li>Implements retry logic for API failures</li>
-                                            <li>Extracts code from model response</li>
+                                            <li>Takes task description as input</li>
+                                            <li>Returns complete Python function implementation</li>
+                                            <li>Maintains consistency with original test assertions</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -578,17 +548,17 @@ Output: asl_score - Average Success Level score
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#func2">
-                                        execute_tests(solution, test_cases)
+                                        summarize_code(code)
                                     </button>
                                 </h2>
                                 <div id="func2" class="accordion-collapse collapse" data-bs-parent="#functionsAccordion">
                                     <div class="accordion-body">
-                                        <code class="d-block mb-2">function execute_tests(solution: string, test_cases: array) → array</code>
-                                        <p>Runs the generated code against test cases in a sandboxed environment.</p>
+                                        <code class="d-block mb-2">function summarize_code(code: string) → string</code>
+                                        <p>Generates natural language description from Python code.</p>
                                         <ul>
-                                            <li>Implements timeout protection</li>
-                                            <li>Captures stdout, stderr, and return values</li>
-                                            <li>Validates output against expected results</li>
+                                            <li>Creates new task specification from code implementation</li>
+                                            <li>Preserves functional intent while varying description</li>
+                                            <li>Forms the basis for next loop iteration</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -597,34 +567,34 @@ Output: asl_score - Average Success Level score
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#func3">
-                                        calculate_robustness(test_results)
+                                        execute_tests(code, test_cases)
                                     </button>
                                 </h2>
                                 <div id="func3" class="accordion-collapse collapse" data-bs-parent="#functionsAccordion">
                                     <div class="accordion-body">
-                                        <code class="d-block mb-2">function calculate_robustness(test_results: array) → float</code>
-                                        <p>Evaluates performance on edge cases and error conditions.</p>
+                                        <code class="d-block mb-2">function execute_tests(code: string, test_cases: array) → boolean</code>
+                                        <p>Validates generated code against original test assertions.</p>
                                         <ul>
-                                            <li>Identifies edge case test failures</li>
-                                            <li>Calculates penalty factors</li>
-                                            <li>Returns robustness coefficient</li>
+                                            <li>Executes code with provided test cases</li>
+                                            <li>Returns PASS if all tests succeed</li>
+                                            <li>Returns FAIL on first test failure</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="mt-5 mb-3">Complexity Analysis</h3>
+                        <h3 class="mt-5 mb-3">Key Insights</h3>
                         
                         <div class="formula-box">
                             <code>
-                                Time Complexity: O(n × m × t)<br>
-                                Space Complexity: O(n × m)<br>
+                                Performance Degradation: 5.01% - 19.31% drop in pass@1 within 10 loops<br>
                                 <br>
-                                where:<br>
-                                - n = number of models<br>
-                                - m = number of test problems<br>
-                                - t = average test cases per problem
+                                Key Findings:<br>
+                                - Robustness ≠ Initial Performance<br>
+                                - Qwen2.5-Coder-32B shows superior sustained performance<br>
+                                - Different models exhibit distinct degradation patterns<br>
+                                - Quadratic weighting better captures long-term stability
                             </code>
                         </div>
                     </div>
@@ -653,19 +623,20 @@ Output: asl_score - Average Success Level score
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>ASL (Ours)</strong></td>
-                                        <td>Weighted average of success rates across difficulty levels</td>
+                                        <td><strong>EVALOOP (Ours)</strong></td>
+                                        <td>Self-consistency evaluation through code generation-summarization loops</td>
                                         <td>
                                             <ul class="mb-0">
-                                                <li>Captures nuanced performance</li>
-                                                <li>Considers difficulty levels</li>
-                                                <li>Comprehensive coverage</li>
+                                                <li>No external attacks needed</li>
+                                                <li>Unified metric across models</li>
+                                                <li>Reveals true robustness patterns</li>
+                                                <li>Configuration-independent</li>
                                             </ul>
                                         </td>
                                         <td>
                                             <ul class="mb-0">
-                                                <li>Complex calculation</li>
-                                                <li>Requires calibrated weights</li>
+                                                <li>Requires dual capabilities</li>
+                                                <li>Multiple API calls per task</li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -704,19 +675,20 @@ Output: asl_score - Average Success Level score
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>HumanEval</strong></td>
-                                        <td>Function completion benchmark</td>
+                                        <td><strong>Adversarial Attacks</strong></td>
+                                        <td>Perturb prompts at character/word/sentence levels</td>
                                         <td>
                                             <ul class="mb-0">
-                                                <li>Standardized benchmark</li>
-                                                <li>Real code execution</li>
+                                                <li>Direct robustness testing</li>
+                                                <li>Multiple attack types</li>
                                             </ul>
                                         </td>
                                         <td>
                                             <ul class="mb-0">
-                                                <li>Limited problem diversity</li>
-                                                <li>Fixed difficulty</li>
-                                                <li>No edge case testing</li>
+                                                <li>Configuration-dependent</li>
+                                                <li>May favor certain models</li>
+                                                <li>Inconsistent results</li>
+                                                <li>External setup required</li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -735,29 +707,29 @@ Output: asl_score - Average Success Level score
                                     <div class="card-body">
                                         <h5 class="card-title">Key Findings</h5>
                                         <ul>
-                                            <li>ASL shows strong correlation (r=0.87) with human evaluation</li>
-                                            <li>Better differentiation between top-tier models</li>
-                                            <li>More stable rankings across different test sets</li>
-                                            <li>Captures edge case performance effectively</li>
+                                            <li>EVALOOP reveals robustness independent of initial performance</li>
+                                            <li>Consistent evaluation without attack configuration bias</li>
+                                            <li>Captures degradation patterns unique to each model</li>
+                                            <li>Quadratic weighting effectively differentiates sustained performance</li>
                                         </ul>
                                         <div class="alert alert-info mt-3">
                                             <i class="bi bi-info-circle"></i> 
-                                            ASL provides 23% better model differentiation compared to Pass@1
+                                            EVALOOP identifies that robustness ≠ one-time performance
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="mt-5 mb-4">Why ASL?</h3>
+                        <h3 class="mt-5 mb-4">Why EVALOOP?</h3>
                         
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <div class="card h-100">
                                     <div class="card-body text-center">
-                                        <i class="bi bi-graph-up display-4 text-primary mb-3"></i>
-                                        <h5>Better Granularity</h5>
-                                        <p>Distinguishes between models with similar pass rates but different robustness levels</p>
+                                        <i class="bi bi-arrow-repeat display-4 text-primary mb-3"></i>
+                                        <h5>Self-consistency</h5>
+                                        <p>Leverages natural duality between code generation and summarization tasks</p>
                                     </div>
                                 </div>
                             </div>
@@ -765,17 +737,17 @@ Output: asl_score - Average Success Level score
                                 <div class="card h-100">
                                     <div class="card-body text-center">
                                         <i class="bi bi-shield-check display-4 text-success mb-3"></i>
-                                        <h5>Robustness Focus</h5>
-                                        <p>Explicitly measures performance on edge cases and error conditions</p>
+                                        <h5>No External Attacks</h5>
+                                        <p>Eliminates configuration dependency and potential bias from adversarial methods</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card h-100">
                                     <div class="card-body text-center">
-                                        <i class="bi bi-layers display-4 text-warning mb-3"></i>
-                                        <h5>Multi-dimensional</h5>
-                                        <p>Evaluates across categories, difficulties, and performance aspects</p>
+                                        <i class="bi bi-graph-down display-4 text-warning mb-3"></i>
+                                        <h5>Degradation Patterns</h5>
+                                        <p>Reveals unique performance decay characteristics for each model</p>
                                     </div>
                                 </div>
                             </div>
@@ -798,7 +770,7 @@ Output: asl_score - Average Success Level score
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="mb-3">
-                        <a href="https://github.com/evaloop" class="text-white me-3">
+                        <a href="https://github.com/EvaLoop-ncsu" class="text-white me-3">
                             <i class="bi bi-github"></i> GitHub
                         </a>
                         <a href="#" class="text-white me-3">

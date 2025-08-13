@@ -2,18 +2,21 @@
 
 ## Overview
 
-EVALOOP is a comprehensive evaluation framework for assessing Large Language Models' programming capabilities and robustness. Using our novel ASL (Average Success Level) metric, we provide nuanced insights into model performance beyond traditional pass/fail metrics.
+EVALOOP is a novel assessment framework that evaluates LLM robustness in programming from a self-consistency perspective. By leveraging the natural duality between code generation and code summarization tasks, EVALOOP creates self-contained feedback loops to measure how well models maintain functional coherence through iterative transformations. Our ASL (Average number of Sustainable Loops) metric provides a unified measure of robustness without relying on external adversarial attacks.
 
+**Paper**: [arXiv:2505.12185](https://arxiv.org/abs/2505.12185)  
+**GitHub**: [https://github.com/EvaLoop-ncsu](https://github.com/EvaLoop-ncsu)  
 **Live Demo**: [https://evaloop.github.io](https://evaloop.github.io)
 
 ## Key Features
 
-- **ASL Metric**: Advanced evaluation metric capturing nuanced performance characteristics
-- **Comprehensive Testing**: 1,265+ test cases across multiple programming categories
+- **Self-consistency Evaluation**: Leverages code generation-summarization duality for robustness assessment
+- **ASL Metric**: Average number of Sustainable Loops before failure in transformation cycles
+- **No External Attacks**: Unified evaluation without configuration-dependent adversarial attacks
+- **17 LLMs Evaluated**: Including GPT-4, Claude, Gemini, and open-source models
 - **Interactive Leaderboard**: Real-time rankings with sortable metrics and filtering
 - **Data Visualization**: Rich charts and graphs for performance analysis
-- **Detailed Results**: In-depth analysis with category breakdowns and trends
-- **Open Data**: Full dataset available for download in multiple formats
+- **Open Source**: Full framework and evaluation data available
 
 ## Website Structure
 
@@ -47,16 +50,27 @@ git clone https://github.com/evaloop/evaloop-ncsu.git
 cd evaloop-ncsu
 ```
 
-2. Open `index.html` in your browser or use a local server:
+2. **Option A: Direct File Access (Simplest)**
+   - Simply open `index.html` directly in your browser
+   - The website will work with embedded data fallback
+
+3. **Option B: Local Server (Recommended for full features)**
 ```bash
-# Using Python
+# Using Python 3
 python -m http.server 8000
+
+# Using Python 2
+python -m SimpleHTTPServer 8000
 
 # Using Node.js
 npx http-server
-```
 
-3. Navigate to `http://localhost:8000`
+# Using PHP
+php -S localhost:8000
+```
+Then navigate to `http://localhost:8000`
+
+**Note**: Due to browser security policies (CORS), directly opening HTML files may limit some features. The website includes embedded data fallback to ensure full functionality even when opened directly.
 
 ### GitHub Pages Deployment
 
@@ -67,24 +81,28 @@ npx http-server
 5. Save and wait for deployment
 6. Access your site at `https://[your-username].github.io/evaloop-ncsu/`
 
-## Evaluation Metrics
+## Evaluation Methodology
 
-### ASL (Average Success Level)
+### EVALOOP Framework
 
-The ASL metric evaluates models across multiple dimensions:
-- **Success Rate**: Percentage of passed test cases
-- **Difficulty Coefficient**: Normalized complexity measure
-- **Category Weight**: Importance factor for each test category
-- **Robustness Factor**: Penalty for edge case failures
+EVALOOP creates a self-contained feedback loop:
+1. **Code Generation**: LLM generates code from natural language specification
+2. **Code Summarization**: Generated code is summarized back to natural language
+3. **Loop Iteration**: New specification is used to generate code again
+4. **Robustness Assessment**: Process continues until functional tests fail
 
-Formula: `ASL = Σ(wi × si × di) / Σ(wi × di)`
+### ASL (Average number of Sustainable Loops)
 
-## Current Results
+Formula: `ASL = Σ(i² × Pass@1_i) / N`
+- Uses quadratic weighting (i²) to emphasize later-loop performance
+- Provides unified metric without external attack dependencies
 
-- **Top Model**: GPT-4-Turbo (ASL: 92.3)
-- **Models Evaluated**: 47
-- **Test Cases**: 1,265
-- **Categories**: Algorithms, Data Structures, System Design, Debugging
+## Key Findings
+
+- **Performance Degradation**: EVALOOP induces 5.01%-19.31% absolute drop in pass@1 within 10 loops
+- **Models Evaluated**: 17 prominent LLMs including GPT-4, o1, o1-mini, Claude, Gemini
+- **Robustness vs Performance**: Initial performance doesn't always align with robustness
+- **Example**: Qwen2.5-Coder-32B shows superior robustness despite lower initial performance
 
 ## Data Access
 
@@ -118,30 +136,26 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 If you use EVALOOP in your research, please cite:
 
 ```bibtex
-@inproceedings{evaloop2024,
-  title={EVALOOP: Comprehensive Evaluation of LLM Programming Robustness Using ASL Metric},
-  author={Doe, Jane and Smith, Alex and Chen, Maria and Johnson, Robert and Lee, Sarah and Wilson, Tom},
-  booktitle={Proceedings of the 41st International Conference on Machine Learning},
-  pages={1234--1248},
+@article{fang2024evaloop,
+  title={EvaLoop: Assessing LLM Robustness in Programming from a Self-consistency Perspective},
+  author={Fang, Sen and Ding, Weiyuan and Xu, Bowen},
+  journal={arXiv preprint arXiv:2505.12185},
   year={2024},
-  organization={PMLR},
-  url={https://evaloop.github.io}
+  url={https://arxiv.org/abs/2505.12185}
 }
 ```
 
 ## Team
 
-- **Dr. Jane Doe** - Principal Investigator
-- **Dr. Alex Smith** - Co-Investigator
-- **Maria Chen** - PhD Candidate
-- **Robert Johnson** - Research Engineer
-- **Sarah Lee** - Data Scientist
-- **Tom Wilson** - Graduate Student
+- **Sen Fang** - Graduate Researcher (sfang9@ncsu.edu)
+- **Weiyuan Ding** - Graduate Researcher (wding8@ncsu.edu)
+- **Bowen Xu** - Faculty Advisor (bxu22@ncsu.edu)
 
 ## Contact
 
-- **Email**: evaloop@ncsu.edu
-- **GitHub**: [github.com/evaloop](https://github.com/evaloop)
+- **Email**: {sfang9, wding8, bxu22}@ncsu.edu
+- **GitHub**: [github.com/EvaLoop-ncsu](https://github.com/EvaLoop-ncsu)
+- **Paper**: [arxiv.org/abs/2505.12185](https://arxiv.org/abs/2505.12185)
 - **Website**: [evaloop.github.io](https://evaloop.github.io)
 
 ## License

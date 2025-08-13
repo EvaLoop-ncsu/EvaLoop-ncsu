@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load model data from JSON
 async function loadModelData() {
     try {
+        // Try to fetch the JSON file
         const response = await fetch('assets/data/models.json');
         const data = await response.json();
         modelsData = data.models;
@@ -31,9 +32,190 @@ async function loadModelData() {
         populateComparisonDropdowns();
         
     } catch (error) {
-        console.error('Error loading model data:', error);
-        showError('Failed to load model data. Please try again later.');
+        console.error('Error loading model data via fetch, using embedded data:', error);
+        // Use embedded data as fallback
+        loadEmbeddedData();
     }
+}
+
+// Fallback embedded data
+function loadEmbeddedData() {
+    const data = {
+        "lastUpdated": "2024-01-20",
+        "models": [
+            {
+                "rank": 1,
+                "name": "o3-mini",
+                "organization": "OpenAI",
+                "aslScore": 7.457,
+                "successRate": 85.2,
+                "avgTime": 1.15,
+                "robustnessScore": 88.5,
+                "testDate": "2024-05-15",
+                "trend": "up",
+                "details": {
+                    "totalTests": 378,
+                    "passed": 322,
+                    "failed": 56,
+                    "categories": {
+                        "algorithms": 86.2,
+                        "dataStructures": 84.8,
+                        "systemDesign": 83.4,
+                        "debugging": 86.7
+                    }
+                }
+            },
+            {
+                "rank": 2,
+                "name": "Qwen2.5-Coder-32B",
+                "organization": "Alibaba",
+                "aslScore": 7.385,
+                "successRate": 82.5,
+                "avgTime": 1.28,
+                "robustnessScore": 91.3,
+                "testDate": "2024-05-15",
+                "trend": "up",
+                "details": {
+                    "totalTests": 378,
+                    "passed": 312,
+                    "failed": 66,
+                    "categories": {
+                        "algorithms": 83.1,
+                        "dataStructures": 82.5,
+                        "systemDesign": 81.9,
+                        "debugging": 82.3
+                    }
+                }
+            },
+            {
+                "rank": 3,
+                "name": "gpt-4.1",
+                "organization": "OpenAI",
+                "aslScore": 7.356,
+                "successRate": 84.1,
+                "avgTime": 1.35,
+                "robustnessScore": 85.1,
+                "testDate": "2024-05-15",
+                "trend": "stable",
+                "details": {
+                    "totalTests": 378,
+                    "passed": 318,
+                    "failed": 60,
+                    "categories": {
+                        "algorithms": 85.3,
+                        "dataStructures": 84.7,
+                        "systemDesign": 82.2,
+                        "debugging": 84.6
+                    }
+                }
+            },
+            {
+                "rank": 4,
+                "name": "o4-mini",
+                "organization": "OpenAI",
+                "aslScore": 7.320,
+                "successRate": 83.5,
+                "avgTime": 1.12,
+                "robustnessScore": 84.8,
+                "testDate": "2024-05-15",
+                "trend": "up",
+                "details": {
+                    "totalTests": 378,
+                    "passed": 316,
+                    "failed": 62,
+                    "categories": {
+                        "algorithms": 84.4,
+                        "dataStructures": 83.9,
+                        "systemDesign": 82.7,
+                        "debugging": 83.3
+                    }
+                }
+            },
+            {
+                "rank": 5,
+                "name": "gpt-4.1-mini",
+                "organization": "OpenAI",
+                "aslScore": 7.291,
+                "successRate": 82.3,
+                "avgTime": 1.08,
+                "robustnessScore": 83.2,
+                "testDate": "2024-05-15",
+                "trend": "up",
+                "details": {
+                    "totalTests": 378,
+                    "passed": 311,
+                    "failed": 67,
+                    "categories": {
+                        "algorithms": 83.7,
+                        "dataStructures": 82.2,
+                        "systemDesign": 81.1,
+                        "debugging": 82.4
+                    }
+                }
+            },
+            {
+                "rank": 6,
+                "name": "o1",
+                "organization": "OpenAI",
+                "aslScore": 7.288,
+                "successRate": 83.8,
+                "avgTime": 1.42,
+                "robustnessScore": 82.3,
+                "testDate": "2024-05-15",
+                "trend": "stable"
+            },
+            {
+                "rank": 7,
+                "name": "DeepSeek-V2.5",
+                "organization": "DeepSeek",
+                "aslScore": 7.267,
+                "successRate": 81.4,
+                "avgTime": 1.37,
+                "robustnessScore": 82.2,
+                "testDate": "2024-05-15",
+                "trend": "up"
+            },
+            {
+                "rank": 8,
+                "name": "o1-mini",
+                "organization": "OpenAI",
+                "aslScore": 7.257,
+                "successRate": 82.8,
+                "avgTime": 1.24,
+                "robustnessScore": 81.9,
+                "testDate": "2024-05-15",
+                "trend": "up"
+            },
+            {
+                "rank": 9,
+                "name": "gpt-4o",
+                "organization": "OpenAI",
+                "aslScore": 7.040,
+                "successRate": 79.2,
+                "avgTime": 1.18,
+                "robustnessScore": 78.1,
+                "testDate": "2024-05-15",
+                "trend": "stable"
+            },
+            {
+                "rank": 10,
+                "name": "gpt-4-turbo",
+                "organization": "OpenAI",
+                "aslScore": 6.821,
+                "successRate": 76.9,
+                "avgTime": 1.33,
+                "robustnessScore": 75.3,
+                "testDate": "2024-05-15",
+                "trend": "down"
+            }
+        ]
+    };
+    
+    modelsData = data.models;
+    updateStatistics(data);
+    initializeDataTable();
+    initializeCharts();
+    populateComparisonDropdowns();
 }
 
 // Update statistics cards
