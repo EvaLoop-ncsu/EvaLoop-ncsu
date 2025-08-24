@@ -101,6 +101,30 @@
             background-color: #f9fafb;
         }
         
+        .rank-change {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            white-space: nowrap;
+        }
+        
+        .rank-up {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+        
+        .rank-down {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .rank-stable {
+            background-color: #f3f4f6;
+            color: #6b7280;
+        }
+        
         @media (max-width: 768px) {
             .chart-container {
                 height: 300px;
@@ -178,7 +202,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body text-center">
                         <h3 class="text-success mb-0" id="avgASL">0</h3>
-                        <small class="text-muted">Average ASL</small>
+                        <small class="text-muted">Average ASL (max 10)</small>
                     </div>
                 </div>
             </div>
@@ -186,7 +210,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body text-center">
                         <h3 class="text-warning mb-0" id="highestASL">0</h3>
-                        <small class="text-muted">Highest ASL</small>
+                        <small class="text-muted">Highest ASL (max 10)</small>
                     </div>
                 </div>
             </div>
@@ -208,6 +232,8 @@
                     <select class="form-select" id="orgFilter">
                         <option value="">All Organizations</option>
                         <option value="OpenAI">OpenAI</option>
+                        <option value="Alibaba">Alibaba</option>
+                        <option value="DeepSeek">DeepSeek</option>
                         <option value="Anthropic">Anthropic</option>
                         <option value="Google">Google</option>
                         <option value="Meta">Meta</option>
@@ -218,19 +244,18 @@
                     <label class="form-label">ASL Score Range</label>
                     <select class="form-select" id="scoreFilter">
                         <option value="">All Scores</option>
-                        <option value="90-100">90-100 (Excellent)</option>
-                        <option value="80-90">80-90 (Very Good)</option>
-                        <option value="70-80">70-80 (Good)</option>
-                        <option value="60-70">60-70 (Fair)</option>
-                        <option value="0-60">&lt;60 (Needs Improvement)</option>
+                        <option value="8-10">8-10 (Excellent)</option>
+                        <option value="6-8">6-8 (Very Good)</option>
+                        <option value="5-6">5-6 (Good)</option>
+                        <option value="4-5">4-5 (Fair)</option>
+                        <option value="0-4">&lt;4 (Needs Improvement)</option>
                     </select>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label class="form-label">Sort By</label>
                     <select class="form-select" id="sortBy">
                         <option value="asl">ASL Score</option>
-                        <option value="success">Success Rate</option>
-                        <option value="time">Average Time</option>
+                        <option value="success">Pass Rate</option>
                         <option value="robustness">Robustness Score</option>
                     </select>
                 </div>
@@ -295,11 +320,8 @@
                                         <th>Model</th>
                                         <th>Organization</th>
                                         <th>ASL Score</th>
-                                        <th>Success Rate</th>
-                                        <th>Avg Time (s)</th>
+                                        <th>Pass Rate</th>
                                         <th>Robustness</th>
-                                        <th>Trend</th>
-                                        <th width="50">Details</th>
                                     </tr>
                                 </thead>
                                 <tbody id="leaderboardBody">

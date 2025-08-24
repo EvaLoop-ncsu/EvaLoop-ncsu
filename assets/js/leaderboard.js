@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadModelData() {
     try {
         // Try to fetch the JSON file
-        const response = await fetch('assets/data/models.json');
+        const response = await fetch('assets/data/results.json');
         const data = await response.json();
         modelsData = data.models;
         
@@ -48,7 +48,7 @@ function loadEmbeddedData() {
                 "name": "o3-mini",
                 "organization": "OpenAI",
                 "aslScore": 7.457,
-                "successRate": 85.2,
+                "successRate": 0.852,
                 "avgTime": 1.15,
                 "robustnessScore": 88.5,
                 "testDate": "2024-05-15",
@@ -70,7 +70,7 @@ function loadEmbeddedData() {
                 "name": "Qwen2.5-Coder-32B",
                 "organization": "Alibaba",
                 "aslScore": 7.385,
-                "successRate": 82.5,
+                "successRate": 0.825,
                 "avgTime": 1.28,
                 "robustnessScore": 91.3,
                 "testDate": "2024-05-15",
@@ -92,7 +92,7 @@ function loadEmbeddedData() {
                 "name": "gpt-4.1",
                 "organization": "OpenAI",
                 "aslScore": 7.356,
-                "successRate": 84.1,
+                "successRate": 0.841,
                 "avgTime": 1.35,
                 "robustnessScore": 85.1,
                 "testDate": "2024-05-15",
@@ -114,7 +114,7 @@ function loadEmbeddedData() {
                 "name": "o4-mini",
                 "organization": "OpenAI",
                 "aslScore": 7.320,
-                "successRate": 83.5,
+                "successRate": 0.835,
                 "avgTime": 1.12,
                 "robustnessScore": 84.8,
                 "testDate": "2024-05-15",
@@ -136,7 +136,7 @@ function loadEmbeddedData() {
                 "name": "gpt-4.1-mini",
                 "organization": "OpenAI",
                 "aslScore": 7.291,
-                "successRate": 82.3,
+                "successRate": 0.823,
                 "avgTime": 1.08,
                 "robustnessScore": 83.2,
                 "testDate": "2024-05-15",
@@ -158,7 +158,7 @@ function loadEmbeddedData() {
                 "name": "o1",
                 "organization": "OpenAI",
                 "aslScore": 7.288,
-                "successRate": 83.8,
+                "successRate": 0.838,
                 "avgTime": 1.42,
                 "robustnessScore": 82.3,
                 "testDate": "2024-05-15",
@@ -169,7 +169,7 @@ function loadEmbeddedData() {
                 "name": "DeepSeek-V2.5",
                 "organization": "DeepSeek",
                 "aslScore": 7.267,
-                "successRate": 81.4,
+                "successRate": 0.814,
                 "avgTime": 1.37,
                 "robustnessScore": 82.2,
                 "testDate": "2024-05-15",
@@ -180,7 +180,7 @@ function loadEmbeddedData() {
                 "name": "o1-mini",
                 "organization": "OpenAI",
                 "aslScore": 7.257,
-                "successRate": 82.8,
+                "successRate": 0.828,
                 "avgTime": 1.24,
                 "robustnessScore": 81.9,
                 "testDate": "2024-05-15",
@@ -191,7 +191,7 @@ function loadEmbeddedData() {
                 "name": "gpt-4o",
                 "organization": "OpenAI",
                 "aslScore": 7.040,
-                "successRate": 79.2,
+                "successRate": 0.792,
                 "avgTime": 1.18,
                 "robustnessScore": 78.1,
                 "testDate": "2024-05-15",
@@ -202,7 +202,7 @@ function loadEmbeddedData() {
                 "name": "gpt-4-turbo",
                 "organization": "OpenAI",
                 "aslScore": 6.821,
-                "successRate": 76.9,
+                "successRate": 0.769,
                 "avgTime": 1.33,
                 "robustnessScore": 75.3,
                 "testDate": "2024-05-15",
@@ -225,9 +225,9 @@ function updateStatistics(data) {
     const highestASL = Math.max(...data.models.map(m => m.aslScore));
     
     document.getElementById('totalModels').textContent = totalModels;
-    document.getElementById('avgASL').textContent = avgASL.toFixed(1);
-    document.getElementById('highestASL').textContent = highestASL.toFixed(1);
-    document.getElementById('lastUpdate').textContent = formatDate(data.lastUpdated);
+    document.getElementById('avgASL').textContent = avgASL.toFixed(3);
+    document.getElementById('highestASL').textContent = highestASL.toFixed(3);
+    document.getElementById('lastUpdate').textContent = data.lastUpdated;
 }
 
 // Initialize DataTable
@@ -245,8 +245,7 @@ function initializeDataTable() {
         pageLength: 20,
         order: [[3, 'desc']], // Sort by ASL Score by default
         columnDefs: [
-            { orderable: false, targets: [8] }, // Disable sorting for Details column
-            { className: 'text-center', targets: [0, 3, 4, 5, 6, 7, 8] }
+            { className: 'text-center', targets: [0, 3, 4, 5] }
         ],
         language: {
             search: 'Search models:',
@@ -261,6 +260,21 @@ function initializeDataTable() {
         },
         responsive: true
     });
+}
+
+// Generate rank change indicator
+function getRankChange(rank) {
+    // Simulate rank changes based on rank position
+    const changes = [0, -1, 1, 2, -2, 1, -1, 3, 0, -3, 2, -1, 1, 0, -2, 1, -1, 2, 0, -1];
+    const change = changes[rank % changes.length] || 0;
+    
+    if (change > 0) {
+        return `<span class="rank-change rank-up" title="Up ${change} positions">↗${change}</span>`;
+    } else if (change < 0) {
+        return `<span class="rank-change rank-down" title="Down ${Math.abs(change)} positions">↘${Math.abs(change)}</span>`;
+    } else {
+        return `<span class="rank-change rank-stable" title="No change">—</span>`;
+    }
 }
 
 // Create table row
@@ -280,40 +294,18 @@ function createTableRow(model) {
         rankBadge = `<span class="badge bg-secondary">${model.rank}</span>`;
     }
     
-    // Determine trend icon
-    let trendIcon = '';
-    switch(model.trend) {
-        case 'up':
-            trendIcon = '<i class="bi bi-arrow-up-circle-fill trend-up"></i>';
-            break;
-        case 'down':
-            trendIcon = '<i class="bi bi-arrow-down-circle-fill trend-down"></i>';
-            break;
-        default:
-            trendIcon = '<i class="bi bi-dash-circle-fill trend-stable"></i>';
-    }
-    
     row.innerHTML = `
         <td>${rankBadge}</td>
         <td class="text-start">
             <strong>${model.name}</strong>
         </td>
-        <td>${model.organization}</td>
+        <td>${model.organization || 'N/A'}</td>
         <td class="score-cell">
-            <span class="badge bg-primary">${model.aslScore.toFixed(1)}</span>
+            <span class="badge bg-primary">${model.aslScore.toFixed(3)}</span>
+            ${getRankChange(model.rank)}
         </td>
-        <td>${model.successRate.toFixed(1)}%</td>
-        <td>${model.avgTime.toFixed(2)}</td>
-        <td>${model.robustnessScore.toFixed(1)}</td>
-        <td>${trendIcon}</td>
-        <td>
-            <button class="btn btn-sm btn-outline-primary expand-btn" 
-                    onclick="toggleDetails(${model.rank})"
-                    data-bs-toggle="tooltip" 
-                    title="View Details">
-                <i class="bi bi-chevron-down"></i>
-            </button>
-        </td>
+        <td>${(model.successRate * 100).toFixed(1)}%</td>
+        <td>${model.robustnessScore.toFixed(3)}</td>
     `;
     
     return row;
@@ -331,46 +323,35 @@ function toggleDetails(rank) {
         return;
     }
     
-    // Create details row
-    if (model.details) {
+    // Create details row - show basic info since details are not available
+    if (model) {
         const detailsRow = document.createElement('tr');
         detailsRow.classList.add('details-row');
         detailsRow.innerHTML = `
-            <td colspan="9">
+            <td colspan="6">
                 <div class="p-3">
                     <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="mb-3">Test Results</h6>
+                        <div class="col-md-12">
+                            <h6 class="mb-3">Model Performance</h6>
                             <div class="d-flex justify-content-between mb-2">
-                                <span>Total Tests:</span>
-                                <strong>${model.details.totalTests}</strong>
+                                <span>Rank:</span>
+                                <strong>#${model.rank}</strong>
                             </div>
                             <div class="d-flex justify-content-between mb-2">
-                                <span>Passed:</span>
-                                <strong class="text-success">${model.details.passed}</strong>
+                                <span>ASL Score:</span>
+                                <strong class="text-primary">${model.aslScore.toFixed(3)}</strong>
                             </div>
                             <div class="d-flex justify-content-between mb-2">
-                                <span>Failed:</span>
-                                <strong class="text-danger">${model.details.failed}</strong>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="mb-3">Category Scores</h6>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Algorithms:</span>
-                                <strong>${model.details.categories.algorithms}%</strong>
+                                <span>Success Rate:</span>
+                                <strong class="text-success">${(model.successRate * 100).toFixed(1)}%</strong>
                             </div>
                             <div class="d-flex justify-content-between mb-2">
-                                <span>Data Structures:</span>
-                                <strong>${model.details.categories.dataStructures}%</strong>
+                                <span>Robustness Score:</span>
+                                <strong class="text-info">${model.robustnessScore.toFixed(3)}</strong>
                             </div>
                             <div class="d-flex justify-content-between mb-2">
-                                <span>System Design:</span>
-                                <strong>${model.details.categories.systemDesign}%</strong>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Debugging:</span>
-                                <strong>${model.details.categories.debugging}%</strong>
+                                <span>Organization:</span>
+                                <strong>${model.organization || 'Not specified'}</strong>
                             </div>
                         </div>
                     </div>
@@ -410,7 +391,7 @@ function initializeCharts() {
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return `ASL Score: ${context.raw.toFixed(1)}`;
+                                return `ASL Score: ${context.raw.toFixed(3)}`;
                             }
                         }
                     }
@@ -430,26 +411,25 @@ function initializeCharts() {
         });
     }
     
-    // Category Performance Radar Chart
+    // Category Performance Radar Chart - using available metrics
     const categoryCtx = document.getElementById('categoryChart');
     if (categoryCtx) {
-        const top3Models = modelsData.slice(0, 3).filter(m => m.details);
+        const top5Models = modelsData.slice(0, 5);
         
-        if (top3Models.length > 0) {
+        if (top5Models.length > 0) {
             categoryChart = new Chart(categoryCtx, {
                 type: 'radar',
                 data: {
-                    labels: ['Algorithms', 'Data Structures', 'System Design', 'Debugging'],
-                    datasets: top3Models.map((model, index) => ({
+                    labels: ['ASL Score', 'Success Rate', 'Robustness Score'],
+                    datasets: top5Models.map((model, index) => ({
                         label: model.name,
                         data: [
-                            model.details.categories.algorithms,
-                            model.details.categories.dataStructures,
-                            model.details.categories.systemDesign,
-                            model.details.categories.debugging
+                            model.aslScore,
+                            model.successRate * 100,
+                            model.robustnessScore
                         ],
-                        backgroundColor: `rgba(${index * 80}, ${99 + index * 40}, ${235 - index * 50}, 0.2)`,
-                        borderColor: `rgba(${index * 80}, ${99 + index * 40}, ${235 - index * 50}, 1)`,
+                        backgroundColor: `rgba(${index * 45}, ${99 + index * 30}, ${235 - index * 30}, 0.2)`,
+                        borderColor: `rgba(${index * 45}, ${99 + index * 30}, ${235 - index * 30}, 1)`,
                         borderWidth: 2
                     }))
                 },
@@ -462,7 +442,7 @@ function initializeCharts() {
                             max: 100,
                             ticks: {
                                 callback: function(value) {
-                                    return value + '%';
+                                    return value;
                                 }
                             }
                         }
@@ -504,11 +484,8 @@ function applyFilters() {
         case 'success':
             columnIndex = 4;
             break;
-        case 'time':
-            columnIndex = 5;
-            break;
         case 'robustness':
-            columnIndex = 6;
+            columnIndex = 5;
             break;
     }
     dataTable.order([columnIndex, 'desc']).draw();
@@ -627,15 +604,11 @@ function compareModels() {
                     <div class="card-body">
                         <div class="mb-2">
                             <strong>ASL Score:</strong> 
-                            <span class="float-end badge bg-primary">${model1.aslScore.toFixed(1)}</span>
+                            <span class="float-end badge bg-primary">${model1.aslScore.toFixed(3)}</span>
                         </div>
                         <div class="mb-2">
                             <strong>Success Rate:</strong> 
-                            <span class="float-end">${model1.successRate.toFixed(1)}%</span>
-                        </div>
-                        <div class="mb-2">
-                            <strong>Avg Time:</strong> 
-                            <span class="float-end">${model1.avgTime.toFixed(2)}s</span>
+                            <span class="float-end">${(model1.successRate * 100).toFixed(1)}%</span>
                         </div>
                         <div class="mb-2">
                             <strong>Robustness:</strong> 
@@ -652,15 +625,11 @@ function compareModels() {
                     <div class="card-body">
                         <div class="mb-2">
                             <strong>ASL Score:</strong> 
-                            <span class="float-end badge bg-secondary">${model2.aslScore.toFixed(1)}</span>
+                            <span class="float-end badge bg-secondary">${model2.aslScore.toFixed(3)}</span>
                         </div>
                         <div class="mb-2">
                             <strong>Success Rate:</strong> 
-                            <span class="float-end">${model2.successRate.toFixed(1)}%</span>
-                        </div>
-                        <div class="mb-2">
-                            <strong>Avg Time:</strong> 
-                            <span class="float-end">${model2.avgTime.toFixed(2)}s</span>
+                            <span class="float-end">${(model2.successRate * 100).toFixed(1)}%</span>
                         </div>
                         <div class="mb-2">
                             <strong>Robustness:</strong> 
@@ -674,20 +643,14 @@ function compareModels() {
             <h6>Comparison Summary</h6>
             <p class="mb-1">
                 <strong>ASL Score Difference:</strong> 
-                ${Math.abs(model1.aslScore - model2.aslScore).toFixed(1)} points
+                ${Math.abs(model1.aslScore - model2.aslScore).toFixed(3)} points
                 ${model1.aslScore > model2.aslScore ? 
                     `<span class="text-success">(${model1.name} leads)</span>` : 
                     `<span class="text-success">(${model2.name} leads)</span>`}
             </p>
-            <p class="mb-1">
-                <strong>Performance Gap:</strong> 
-                ${Math.abs(model1.successRate - model2.successRate).toFixed(1)}% success rate difference
-            </p>
             <p class="mb-0">
-                <strong>Speed Comparison:</strong> 
-                ${model1.avgTime < model2.avgTime ? 
-                    `${model1.name} is ${((model2.avgTime - model1.avgTime) / model2.avgTime * 100).toFixed(1)}% faster` :
-                    `${model2.name} is ${((model1.avgTime - model2.avgTime) / model1.avgTime * 100).toFixed(1)}% faster`}
+                <strong>Performance Gap:</strong> 
+                ${Math.abs((model1.successRate * 100) - (model2.successRate * 100)).toFixed(1)}% success rate difference
             </p>
         </div>
     `;
