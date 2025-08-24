@@ -1,0 +1,1075 @@
+{
+    "lastUpdated": "2025-08-23 22:35:31",
+    "models": [
+        {
+            "rank": 1,
+            "name": "qwen3-235b-a22b-instruct-2507",
+            "organization": "Alibaba",
+            "successRate": 0.796,
+            "aslScore": 7.677,
+            "robustnessScore": 9.641,
+            "rankBySuccessRate": 6,
+            "rankChange": "-5"
+        },
+        {
+            "rank": 2,
+            "name": "qw235b-inst",
+            "organization": "Alibaba",
+            "successRate": 0.794,
+            "aslScore": 7.658,
+            "robustnessScore": 9.649,
+            "rankBySuccessRate": 7,
+            "rankChange": "-5"
+        },
+        {
+            "rank": 3,
+            "name": "qwen3-coder-480b-a35b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.786,
+            "aslScore": 7.599,
+            "robustnessScore": 9.671,
+            "rankBySuccessRate": 8,
+            "rankChange": "-5"
+        },
+        {
+            "rank": 4,
+            "name": "DeepSeek-V3",
+            "organization": "DeepSeek",
+            "successRate": 0.804,
+            "aslScore": 7.483,
+            "robustnessScore": 9.305,
+            "rankBySuccessRate": 5,
+            "rankChange": "-1"
+        },
+        {
+            "rank": 5,
+            "name": "o3-mini",
+            "organization": "OpenAI",
+            "successRate": 0.81,
+            "aslScore": 7.457,
+            "robustnessScore": 9.211,
+            "rankBySuccessRate": 3,
+            "rankChange": "+2"
+        },
+        {
+            "rank": 6,
+            "name": "qw32b",
+            "organization": "Alibaba",
+            "successRate": 0.775,
+            "aslScore": 7.385,
+            "robustnessScore": 9.527,
+            "rankBySuccessRate": 10,
+            "rankChange": "-4"
+        },
+        {
+            "rank": 7,
+            "name": "gpt-4.1",
+            "organization": "OpenAI",
+            "successRate": 0.775,
+            "aslScore": 7.356,
+            "robustnessScore": 9.489,
+            "rankBySuccessRate": 11,
+            "rankChange": "-4"
+        },
+        {
+            "rank": 8,
+            "name": "o4-mini",
+            "organization": "OpenAI",
+            "successRate": 0.815,
+            "aslScore": 7.32,
+            "robustnessScore": 8.983,
+            "rankBySuccessRate": 1,
+            "rankChange": "+7"
+        },
+        {
+            "rank": 9,
+            "name": "gpt-4.1-mini",
+            "organization": "OpenAI",
+            "successRate": 0.778,
+            "aslScore": 7.291,
+            "robustnessScore": 9.374,
+            "rankBySuccessRate": 9,
+            "rankChange": "-"
+        },
+        {
+            "rank": 10,
+            "name": "o1",
+            "organization": "OpenAI",
+            "successRate": 0.812,
+            "aslScore": 7.288,
+            "robustnessScore": 8.973,
+            "rankBySuccessRate": 2,
+            "rankChange": "+8"
+        },
+        {
+            "rank": 11,
+            "name": "dsv2_full",
+            "organization": "DeepSeek",
+            "successRate": 0.77,
+            "aslScore": 7.267,
+            "robustnessScore": 9.439,
+            "rankBySuccessRate": 13,
+            "rankChange": "-2"
+        },
+        {
+            "rank": 12,
+            "name": "o1-mini",
+            "organization": "OpenAI",
+            "successRate": 0.81,
+            "aslScore": 7.257,
+            "robustnessScore": 8.964,
+            "rankBySuccessRate": 4,
+            "rankChange": "+8"
+        },
+        {
+            "rank": 13,
+            "name": "qwen3-30b-a3b-instruct-2507",
+            "organization": "Alibaba",
+            "successRate": 0.751,
+            "aslScore": 7.124,
+            "robustnessScore": 9.482,
+            "rankBySuccessRate": 21,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 14,
+            "name": "gpt-4o",
+            "organization": "OpenAI",
+            "successRate": 0.759,
+            "aslScore": 7.04,
+            "robustnessScore": 9.272,
+            "rankBySuccessRate": 17,
+            "rankChange": "-3"
+        },
+        {
+            "rank": 15,
+            "name": "qwen2.5-coder-32b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.759,
+            "aslScore": 6.991,
+            "robustnessScore": 9.208,
+            "rankBySuccessRate": 18,
+            "rankChange": "-3"
+        },
+        {
+            "rank": 16,
+            "name": "qw235b",
+            "organization": "Alibaba",
+            "successRate": 0.772,
+            "aslScore": 6.975,
+            "robustnessScore": 9.029,
+            "rankBySuccessRate": 12,
+            "rankChange": "+4"
+        },
+        {
+            "rank": 17,
+            "name": "DeepSeek-V2.5",
+            "organization": "DeepSeek",
+            "successRate": 0.765,
+            "aslScore": 6.947,
+            "robustnessScore": 9.086,
+            "rankBySuccessRate": 15,
+            "rankChange": "+2"
+        },
+        {
+            "rank": 18,
+            "name": "gemini_2_5_flash",
+            "organization": "Google",
+            "successRate": 0.767,
+            "aslScore": 6.923,
+            "robustnessScore": 9.024,
+            "rankBySuccessRate": 14,
+            "rankChange": "+4"
+        },
+        {
+            "rank": 19,
+            "name": "google_gemma-3-27b-it",
+            "organization": "Google",
+            "successRate": 0.746,
+            "aslScore": 6.907,
+            "robustnessScore": 9.258,
+            "rankBySuccessRate": 22,
+            "rankChange": "-3"
+        },
+        {
+            "rank": 20,
+            "name": "google_gemma-3-12b-it",
+            "organization": "Google",
+            "successRate": 0.722,
+            "aslScore": 6.841,
+            "robustnessScore": 9.472,
+            "rankBySuccessRate": 30,
+            "rankChange": "-10"
+        },
+        {
+            "rank": 21,
+            "name": "gpt-4-turbo",
+            "organization": "OpenAI",
+            "successRate": 0.741,
+            "aslScore": 6.821,
+            "robustnessScore": 9.209,
+            "rankBySuccessRate": 23,
+            "rankChange": "-2"
+        },
+        {
+            "rank": 22,
+            "name": "zai-org_GLM-4.5-Air",
+            "organization": "Zhipu",
+            "successRate": 0.728,
+            "aslScore": 6.811,
+            "robustnessScore": 9.361,
+            "rankBySuccessRate": 27,
+            "rankChange": "-5"
+        },
+        {
+            "rank": 23,
+            "name": "llama-3.1-405b-instruct",
+            "organization": "Meta",
+            "successRate": 0.722,
+            "aslScore": 6.788,
+            "robustnessScore": 9.399,
+            "rankBySuccessRate": 31,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 24,
+            "name": "qwen2.5-coder-14b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.733,
+            "aslScore": 6.678,
+            "robustnessScore": 9.113,
+            "rankBySuccessRate": 24,
+            "rankChange": "-"
+        },
+        {
+            "rank": 25,
+            "name": "qwen3-coder-30b-a3b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.765,
+            "aslScore": 6.67,
+            "robustnessScore": 8.724,
+            "rankBySuccessRate": 16,
+            "rankChange": "+9"
+        },
+        {
+            "rank": 26,
+            "name": "nextcoder-32b",
+            "organization": "Mungert",
+            "successRate": 0.754,
+            "aslScore": 6.612,
+            "robustnessScore": 8.77,
+            "rankBySuccessRate": 19,
+            "rankChange": "+7"
+        },
+        {
+            "rank": 27,
+            "name": "nextcoder-14b",
+            "organization": "Mungert",
+            "successRate": 0.725,
+            "aslScore": 6.522,
+            "robustnessScore": 8.998,
+            "rankBySuccessRate": 28,
+            "rankChange": "-1"
+        },
+        {
+            "rank": 28,
+            "name": "llama-3.3-70b-instruct",
+            "organization": "Meta",
+            "successRate": 0.714,
+            "aslScore": 6.519,
+            "robustnessScore": 9.126,
+            "rankBySuccessRate": 35,
+            "rankChange": "-7"
+        },
+        {
+            "rank": 29,
+            "name": "opencoder-8b-instruct",
+            "organization": "LM Studio Community",
+            "successRate": 0.701,
+            "aslScore": 6.491,
+            "robustnessScore": 9.259,
+            "rankBySuccessRate": 37,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 30,
+            "name": "seed-coder-8b-instruct",
+            "organization": "ByteDance",
+            "successRate": 0.73,
+            "aslScore": 6.455,
+            "robustnessScore": 8.841,
+            "rankBySuccessRate": 25,
+            "rankChange": "+5"
+        },
+        {
+            "rank": 31,
+            "name": "mistral-large-instruct",
+            "organization": "Mistral",
+            "successRate": 0.714,
+            "aslScore": 6.424,
+            "robustnessScore": 8.993,
+            "rankBySuccessRate": 36,
+            "rankChange": "-5"
+        },
+        {
+            "rank": 32,
+            "name": "qw7b",
+            "organization": "Alibaba",
+            "successRate": 0.698,
+            "aslScore": 6.411,
+            "robustnessScore": 9.18,
+            "rankBySuccessRate": 39,
+            "rankChange": "-7"
+        },
+        {
+            "rank": 33,
+            "name": "qwen2.5-coder-7b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.717,
+            "aslScore": 6.343,
+            "robustnessScore": 8.847,
+            "rankBySuccessRate": 32,
+            "rankChange": "+1"
+        },
+        {
+            "rank": 34,
+            "name": "dsv2",
+            "organization": "DeepSeek",
+            "successRate": 0.693,
+            "aslScore": 6.297,
+            "robustnessScore": 9.085,
+            "rankBySuccessRate": 40,
+            "rankChange": "-6"
+        },
+        {
+            "rank": 35,
+            "name": "gpt-3.5-turbo",
+            "organization": "OpenAI",
+            "successRate": 0.701,
+            "aslScore": 6.258,
+            "robustnessScore": 8.927,
+            "rankBySuccessRate": 38,
+            "rankChange": "-3"
+        },
+        {
+            "rank": 36,
+            "name": "zai-org_GLM-4.5",
+            "organization": "Zhipu",
+            "successRate": 0.754,
+            "aslScore": 6.231,
+            "robustnessScore": 8.265,
+            "rankBySuccessRate": 20,
+            "rankChange": "+16"
+        },
+        {
+            "rank": 37,
+            "name": "zai-org_GLM-4-9B-0414",
+            "organization": "Zhipu",
+            "successRate": 0.688,
+            "aslScore": 6.201,
+            "robustnessScore": 9.015,
+            "rankBySuccessRate": 44,
+            "rankChange": "-7"
+        },
+        {
+            "rank": 38,
+            "name": "ling-lite-1.5",
+            "organization": "inclusionAI",
+            "successRate": 0.717,
+            "aslScore": 6.179,
+            "robustnessScore": 8.618,
+            "rankBySuccessRate": 33,
+            "rankChange": "+5"
+        },
+        {
+            "rank": 39,
+            "name": "pixtral-large-instruct",
+            "organization": "Mistral",
+            "successRate": 0.677,
+            "aslScore": 6.152,
+            "robustnessScore": 9.084,
+            "rankBySuccessRate": 47,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 40,
+            "name": "openbmb_MiniCPM4-8B",
+            "organization": "OpenBMB",
+            "successRate": 0.725,
+            "aslScore": 6.14,
+            "robustnessScore": 8.471,
+            "rankBySuccessRate": 29,
+            "rankChange": "+11"
+        },
+        {
+            "rank": 41,
+            "name": "mistral-small-3.2-24b-instruct",
+            "organization": "Mistral",
+            "successRate": 0.693,
+            "aslScore": 6.03,
+            "robustnessScore": 8.7,
+            "rankBySuccessRate": 41,
+            "rankChange": "-"
+        },
+        {
+            "rank": 42,
+            "name": "llama-3.1-70b-instruct",
+            "organization": "Meta",
+            "successRate": 0.717,
+            "aslScore": 6.025,
+            "robustnessScore": 8.403,
+            "rankBySuccessRate": 34,
+            "rankChange": "+8"
+        },
+        {
+            "rank": 43,
+            "name": "meta-llama-3-70b-instruct",
+            "organization": "Meta",
+            "successRate": 0.667,
+            "aslScore": 6.019,
+            "robustnessScore": 9.028,
+            "rankBySuccessRate": 52,
+            "rankChange": "-9"
+        },
+        {
+            "rank": 44,
+            "name": "qwen3-4b-instruct-2507",
+            "organization": "Alibaba",
+            "successRate": 0.669,
+            "aslScore": 5.988,
+            "robustnessScore": 8.947,
+            "rankBySuccessRate": 51,
+            "rankChange": "-7"
+        },
+        {
+            "rank": 45,
+            "name": "codestral-22b",
+            "organization": "Codestral",
+            "successRate": 0.683,
+            "aslScore": 5.97,
+            "robustnessScore": 8.747,
+            "rankBySuccessRate": 45,
+            "rankChange": "-"
+        },
+        {
+            "rank": 46,
+            "name": "ds7b",
+            "organization": "DeepSeek",
+            "successRate": 0.653,
+            "aslScore": 5.959,
+            "robustnessScore": 9.119,
+            "rankBySuccessRate": 54,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 47,
+            "name": "qwen2.5-coder-3b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.661,
+            "aslScore": 5.948,
+            "robustnessScore": 8.994,
+            "rankBySuccessRate": 53,
+            "rankChange": "-6"
+        },
+        {
+            "rank": 48,
+            "name": "mistral-small-3.1-24b-instruct",
+            "organization": "Mistral",
+            "successRate": 0.675,
+            "aslScore": 5.939,
+            "robustnessScore": 8.803,
+            "rankBySuccessRate": 48,
+            "rankChange": "-"
+        },
+        {
+            "rank": 49,
+            "name": "DeepSeek-V2-Chat",
+            "organization": "DeepSeek",
+            "successRate": 0.69,
+            "aslScore": 5.855,
+            "robustnessScore": 8.48,
+            "rankBySuccessRate": 43,
+            "rankChange": "+6"
+        },
+        {
+            "rank": 50,
+            "name": "baichuan-m2-32b",
+            "organization": "Baichuan",
+            "successRate": 0.73,
+            "aslScore": 5.829,
+            "robustnessScore": 7.983,
+            "rankBySuccessRate": 26,
+            "rankChange": "+24"
+        },
+        {
+            "rank": 51,
+            "name": "deepseek-coder-33b-instruct",
+            "organization": "DeepSeek",
+            "successRate": 0.693,
+            "aslScore": 5.774,
+            "robustnessScore": 8.331,
+            "rankBySuccessRate": 42,
+            "rankChange": "+9"
+        },
+        {
+            "rank": 52,
+            "name": "google_gemma-3-4b-it",
+            "organization": "Google",
+            "successRate": 0.648,
+            "aslScore": 5.768,
+            "robustnessScore": 8.899,
+            "rankBySuccessRate": 55,
+            "rankChange": "-3"
+        },
+        {
+            "rank": 53,
+            "name": "mistral-small-instruct",
+            "organization": "Mistral",
+            "successRate": 0.632,
+            "aslScore": 5.701,
+            "robustnessScore": 9.017,
+            "rankBySuccessRate": 58,
+            "rankChange": "-5"
+        },
+        {
+            "rank": 54,
+            "name": "mixtral-8x22b-instruct",
+            "organization": "Mistral",
+            "successRate": 0.638,
+            "aslScore": 5.578,
+            "robustnessScore": 8.748,
+            "rankBySuccessRate": 57,
+            "rankChange": "-3"
+        },
+        {
+            "rank": 55,
+            "name": "cs22b",
+            "organization": "Codestral",
+            "successRate": 0.611,
+            "aslScore": 5.485,
+            "robustnessScore": 8.975,
+            "rankBySuccessRate": 63,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 56,
+            "name": "qwen2.5-coder-1.5b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.593,
+            "aslScore": 5.324,
+            "robustnessScore": 8.984,
+            "rankBySuccessRate": 66,
+            "rankChange": "-10"
+        },
+        {
+            "rank": 57,
+            "name": "oc8b",
+            "organization": "LM Studio Community",
+            "successRate": 0.619,
+            "aslScore": 5.154,
+            "robustnessScore": 8.326,
+            "rankBySuccessRate": 61,
+            "rankChange": "-4"
+        },
+        {
+            "rank": 58,
+            "name": "phi-4-reasoning",
+            "organization": "Microsoft",
+            "successRate": 0.683,
+            "aslScore": 4.9,
+            "robustnessScore": 7.179,
+            "rankBySuccessRate": 46,
+            "rankChange": "+12"
+        },
+        {
+            "rank": 59,
+            "name": "ministral-8b-instruct",
+            "organization": "Mistral",
+            "successRate": 0.561,
+            "aslScore": 4.847,
+            "robustnessScore": 8.642,
+            "rankBySuccessRate": 71,
+            "rankChange": "-12"
+        },
+        {
+            "rank": 60,
+            "name": "phi-3.5-moe-instruct",
+            "organization": "Microsoft",
+            "successRate": 0.616,
+            "aslScore": 4.716,
+            "robustnessScore": 7.65,
+            "rankBySuccessRate": 62,
+            "rankChange": "-2"
+        },
+        {
+            "rank": 61,
+            "name": "phi-3.5-mini-instruct",
+            "organization": "Microsoft",
+            "successRate": 0.524,
+            "aslScore": 4.708,
+            "robustnessScore": 8.987,
+            "rankBySuccessRate": 75,
+            "rankChange": "-14"
+        },
+        {
+            "rank": 62,
+            "name": "mixtral-8x7b-instruct",
+            "organization": "Mistral",
+            "successRate": 0.566,
+            "aslScore": 4.689,
+            "robustnessScore": 8.282,
+            "rankBySuccessRate": 70,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 63,
+            "name": "ling-plus",
+            "organization": "inclusionAI",
+            "successRate": 0.556,
+            "aslScore": 4.523,
+            "robustnessScore": 8.142,
+            "rankBySuccessRate": 73,
+            "rankChange": "-10"
+        },
+        {
+            "rank": 64,
+            "name": "meta-llama-3-8b-instruct",
+            "organization": "Meta",
+            "successRate": 0.571,
+            "aslScore": 4.313,
+            "robustnessScore": 7.548,
+            "rankBySuccessRate": 67,
+            "rankChange": "-3"
+        },
+        {
+            "rank": 65,
+            "name": "phi-4-mini-instruct",
+            "organization": "Microsoft",
+            "successRate": 0.489,
+            "aslScore": 4.009,
+            "robustnessScore": 8.191,
+            "rankBySuccessRate": 79,
+            "rankChange": "-14"
+        },
+        {
+            "rank": 66,
+            "name": "qwen3-235b-a22b",
+            "organization": "Alibaba",
+            "successRate": 0.624,
+            "aslScore": 3.942,
+            "robustnessScore": 6.313,
+            "rankBySuccessRate": 59,
+            "rankChange": "+7"
+        },
+        {
+            "rank": 67,
+            "name": "lm8b",
+            "organization": "Meta",
+            "successRate": 0.569,
+            "aslScore": 3.818,
+            "robustnessScore": 6.713,
+            "rankBySuccessRate": 68,
+            "rankChange": "-1"
+        },
+        {
+            "rank": 68,
+            "name": "qwen2.5-coder-0.5b-instruct",
+            "organization": "Alibaba",
+            "successRate": 0.397,
+            "aslScore": 3.425,
+            "robustnessScore": 8.632,
+            "rankBySuccessRate": 84,
+            "rankChange": "-16"
+        },
+        {
+            "rank": 69,
+            "name": "DeepSeek-V2-Lite-Chat",
+            "organization": "DeepSeek",
+            "successRate": 0.513,
+            "aslScore": 3.289,
+            "robustnessScore": 6.408,
+            "rankBySuccessRate": 76,
+            "rankChange": "-7"
+        },
+        {
+            "rank": 70,
+            "name": "moonlight-16b-a3b-instruct",
+            "organization": "Moonlight",
+            "successRate": 0.624,
+            "aslScore": 3.193,
+            "robustnessScore": 5.115,
+            "rankBySuccessRate": 60,
+            "rankChange": "+10"
+        },
+        {
+            "rank": 71,
+            "name": "nextcoder-7b",
+            "organization": "Mungert",
+            "successRate": 0.675,
+            "aslScore": 3.133,
+            "robustnessScore": 4.644,
+            "rankBySuccessRate": 49,
+            "rankChange": "+22"
+        },
+        {
+            "rank": 72,
+            "name": "mistral-7b-instruct-v0.3",
+            "organization": "Mistral",
+            "successRate": 0.423,
+            "aslScore": 3.13,
+            "robustnessScore": 7.396,
+            "rankBySuccessRate": 82,
+            "rankChange": "-10"
+        },
+        {
+            "rank": 73,
+            "name": "seed-coder-8b-reasoning",
+            "organization": "ByteDance",
+            "successRate": 0.468,
+            "aslScore": 3.108,
+            "robustnessScore": 6.638,
+            "rankBySuccessRate": 81,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 74,
+            "name": "phi-3-mini-4k-instruct",
+            "organization": "Microsoft",
+            "successRate": 0.603,
+            "aslScore": 3.031,
+            "robustnessScore": 5.026,
+            "rankBySuccessRate": 64,
+            "rankChange": "+10"
+        },
+        {
+            "rank": 75,
+            "name": "mistral-7b-instruct-v0.2",
+            "organization": "Mistral",
+            "successRate": 0.386,
+            "aslScore": 2.898,
+            "robustnessScore": 7.504,
+            "rankBySuccessRate": 86,
+            "rankChange": "-11"
+        },
+        {
+            "rank": 76,
+            "name": "phi-3-medium-4k-instruct",
+            "organization": "Microsoft",
+            "successRate": 0.365,
+            "aslScore": 2.37,
+            "robustnessScore": 6.492,
+            "rankBySuccessRate": 87,
+            "rankChange": "-11"
+        },
+        {
+            "rank": 77,
+            "name": "opencoder-1.5b-instruct",
+            "organization": "LM Studio Community",
+            "successRate": 0.603,
+            "aslScore": 2.365,
+            "robustnessScore": 3.921,
+            "rankBySuccessRate": 65,
+            "rankChange": "+12"
+        },
+        {
+            "rank": 78,
+            "name": "qwen3-4b-thinking-2507",
+            "organization": "Alibaba",
+            "successRate": 0.397,
+            "aslScore": 2.098,
+            "robustnessScore": 5.287,
+            "rankBySuccessRate": 85,
+            "rankChange": "-7"
+        },
+        {
+            "rank": 79,
+            "name": "llama-3.1-8b-instruct",
+            "organization": "Meta",
+            "successRate": 0.558,
+            "aslScore": 2.083,
+            "robustnessScore": 3.732,
+            "rankBySuccessRate": 72,
+            "rankChange": "+7"
+        },
+        {
+            "rank": 80,
+            "name": "zai-org_GLM-4-32B-0414",
+            "organization": "Zhipu",
+            "successRate": 0.643,
+            "aslScore": 1.967,
+            "robustnessScore": 3.06,
+            "rankBySuccessRate": 56,
+            "rankChange": "+24"
+        },
+        {
+            "rank": 81,
+            "name": "janhq_Jan-v1-4B",
+            "organization": "Janhq",
+            "successRate": 0.505,
+            "aslScore": 1.851,
+            "robustnessScore": 3.663,
+            "rankBySuccessRate": 78,
+            "rankChange": "+3"
+        },
+        {
+            "rank": 82,
+            "name": "qwen3-1.7b",
+            "organization": "Alibaba",
+            "successRate": 0.291,
+            "aslScore": 1.641,
+            "robustnessScore": 5.638,
+            "rankBySuccessRate": 90,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 83,
+            "name": "deepseek-coder-1.3b-instruct",
+            "organization": "DeepSeek",
+            "successRate": 0.291,
+            "aslScore": 1.353,
+            "robustnessScore": 4.649,
+            "rankBySuccessRate": 91,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 84,
+            "name": "deepseek-coder-1.3b-instruct_test",
+            "organization": "DeepSeek",
+            "successRate": 0.288,
+            "aslScore": 1.295,
+            "robustnessScore": 4.492,
+            "rankBySuccessRate": 92,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 85,
+            "name": "zai-org_glm-4-9b-chat-hf",
+            "organization": "Zhipu",
+            "successRate": 0.188,
+            "aslScore": 1.239,
+            "robustnessScore": 6.596,
+            "rankBySuccessRate": 97,
+            "rankChange": "-12"
+        },
+        {
+            "rank": 86,
+            "name": "deepseek-coder-6.7b-instruct",
+            "organization": "DeepSeek",
+            "successRate": 0.267,
+            "aslScore": 1.114,
+            "robustnessScore": 4.168,
+            "rankBySuccessRate": 94,
+            "rankChange": "-8"
+        },
+        {
+            "rank": 87,
+            "name": "llama-3.2-3b-instruct",
+            "organization": "Meta",
+            "successRate": 0.513,
+            "aslScore": 1.066,
+            "robustnessScore": 2.077,
+            "rankBySuccessRate": 77,
+            "rankChange": "+10"
+        },
+        {
+            "rank": 88,
+            "name": "mistral-7b-instruct-v0.1",
+            "organization": "Mistral",
+            "successRate": 0.127,
+            "aslScore": 0.997,
+            "robustnessScore": 7.854,
+            "rankBySuccessRate": 100,
+            "rankChange": "-12"
+        },
+        {
+            "rank": 89,
+            "name": "google_gemma-3-1b-it",
+            "organization": "Google",
+            "successRate": 0.333,
+            "aslScore": 0.992,
+            "robustnessScore": 2.977,
+            "rankBySuccessRate": 88,
+            "rankChange": "+1"
+        },
+        {
+            "rank": 90,
+            "name": "codellama-34b-instruct",
+            "organization": "Meta",
+            "successRate": 0.146,
+            "aslScore": 0.929,
+            "robustnessScore": 6.387,
+            "rankBySuccessRate": 99,
+            "rankChange": "-9"
+        },
+        {
+            "rank": 91,
+            "name": "qwen3-30b-a3b",
+            "organization": "Alibaba",
+            "successRate": 0.532,
+            "aslScore": 0.857,
+            "robustnessScore": 1.611,
+            "rankBySuccessRate": 74,
+            "rankChange": "+17"
+        },
+        {
+            "rank": 92,
+            "name": "qwen3-235b-a22b-thinking-2507",
+            "organization": "Alibaba",
+            "successRate": 0.418,
+            "aslScore": 0.798,
+            "robustnessScore": 1.908,
+            "rankBySuccessRate": 83,
+            "rankChange": "+9"
+        },
+        {
+            "rank": 93,
+            "name": "codellama-13b-instruct",
+            "organization": "Meta",
+            "successRate": 0.286,
+            "aslScore": 0.679,
+            "robustnessScore": 2.375,
+            "rankBySuccessRate": 93,
+            "rankChange": "-"
+        },
+        {
+            "rank": 94,
+            "name": "phi-4-reasoning-plus",
+            "organization": "Microsoft",
+            "successRate": 0.569,
+            "aslScore": 0.657,
+            "robustnessScore": 1.155,
+            "rankBySuccessRate": 69,
+            "rankChange": "+25"
+        },
+        {
+            "rank": 95,
+            "name": "openbmb_MiniCPM4-0.5B",
+            "organization": "OpenBMB",
+            "successRate": 0.489,
+            "aslScore": 0.63,
+            "robustnessScore": 1.286,
+            "rankBySuccessRate": 80,
+            "rankChange": "+15"
+        },
+        {
+            "rank": 96,
+            "name": "phi-4-mini-reasoning",
+            "organization": "Microsoft",
+            "successRate": 0.251,
+            "aslScore": 0.586,
+            "robustnessScore": 2.332,
+            "rankBySuccessRate": 95,
+            "rankChange": "+1"
+        },
+        {
+            "rank": 97,
+            "name": "llama-3.2-1b-instruct",
+            "organization": "Meta",
+            "successRate": 0.185,
+            "aslScore": 0.554,
+            "robustnessScore": 2.991,
+            "rankBySuccessRate": 98,
+            "rankChange": "-1"
+        },
+        {
+            "rank": 98,
+            "name": "qwen3-32b",
+            "organization": "Alibaba",
+            "successRate": 0.672,
+            "aslScore": 0.441,
+            "robustnessScore": 0.657,
+            "rankBySuccessRate": 50,
+            "rankChange": "+48"
+        },
+        {
+            "rank": 99,
+            "name": "qwen3-4b",
+            "organization": "Alibaba",
+            "successRate": 0.241,
+            "aslScore": 0.344,
+            "robustnessScore": 1.427,
+            "rankBySuccessRate": 96,
+            "rankChange": "+3"
+        },
+        {
+            "rank": 100,
+            "name": "qwen3-8b",
+            "organization": "Alibaba",
+            "successRate": 0.296,
+            "aslScore": 0.319,
+            "robustnessScore": 1.078,
+            "rankBySuccessRate": 89,
+            "rankChange": "+11"
+        },
+        {
+            "rank": 101,
+            "name": "zai-org_GLM-Z1-32B-0414",
+            "organization": "Zhipu",
+            "successRate": 0.019,
+            "aslScore": 0.084,
+            "robustnessScore": 4.557,
+            "rankBySuccessRate": 105,
+            "rankChange": "-4"
+        },
+        {
+            "rank": 102,
+            "name": "qwen3-14b",
+            "organization": "Alibaba",
+            "successRate": 0.077,
+            "aslScore": 0.072,
+            "robustnessScore": 0.945,
+            "rankBySuccessRate": 101,
+            "rankChange": "+1"
+        },
+        {
+            "rank": 103,
+            "name": "zai-org_GLM-Z1-9B-0414",
+            "organization": "Zhipu",
+            "successRate": 0.032,
+            "aslScore": 0.06,
+            "robustnessScore": 1.875,
+            "rankBySuccessRate": 104,
+            "rankChange": "-1"
+        },
+        {
+            "rank": 104,
+            "name": "qwen3-0.6b",
+            "organization": "Alibaba",
+            "successRate": 0.011,
+            "aslScore": 0.027,
+            "robustnessScore": 2.575,
+            "rankBySuccessRate": 106,
+            "rankChange": "-2"
+        },
+        {
+            "rank": 105,
+            "name": "qwen3-30b-a3b-thinking-2507",
+            "organization": "Alibaba",
+            "successRate": 0.056,
+            "aslScore": 0.006,
+            "robustnessScore": 0.114,
+            "rankBySuccessRate": 102,
+            "rankChange": "+3"
+        },
+        {
+            "rank": 106,
+            "name": "codellama-70b-instruct",
+            "organization": "Meta",
+            "successRate": 0.045,
+            "aslScore": 0.004,
+            "robustnessScore": 0.1,
+            "rankBySuccessRate": 103,
+            "rankChange": "+3"
+        },
+        {
+            "rank": 107,
+            "name": "phi-4",
+            "organization": "Microsoft",
+            "successRate": 0.0,
+            "aslScore": 0.0,
+            "robustnessScore": 0,
+            "rankBySuccessRate": 107,
+            "rankChange": "-"
+        }
+    ]
+}
