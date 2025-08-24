@@ -53,6 +53,7 @@ function loadEmbeddedData() {
                 "robustnessScore": 88.5,
                 "testDate": "2024-05-15",
                 "trend": "up",
+                "rankChange": "+2",
                 "details": {
                     "totalTests": 378,
                     "passed": 322,
@@ -75,6 +76,7 @@ function loadEmbeddedData() {
                 "robustnessScore": 91.3,
                 "testDate": "2024-05-15",
                 "trend": "up",
+                "rankChange": "+1",
                 "details": {
                     "totalTests": 378,
                     "passed": 312,
@@ -97,6 +99,7 @@ function loadEmbeddedData() {
                 "robustnessScore": 85.1,
                 "testDate": "2024-05-15",
                 "trend": "stable",
+                "rankChange": "0",
                 "details": {
                     "totalTests": 378,
                     "passed": 318,
@@ -119,6 +122,7 @@ function loadEmbeddedData() {
                 "robustnessScore": 84.8,
                 "testDate": "2024-05-15",
                 "trend": "up",
+                "rankChange": "+3",
                 "details": {
                     "totalTests": 378,
                     "passed": 316,
@@ -206,7 +210,8 @@ function loadEmbeddedData() {
                 "avgTime": 1.33,
                 "robustnessScore": 75.3,
                 "testDate": "2024-05-15",
-                "trend": "down"
+                "trend": "down",
+                "rankChange": "-2"
             }
         ]
     };
@@ -242,7 +247,7 @@ function initializeDataTable() {
     
     // Initialize DataTable
     dataTable = $('#leaderboardTable').DataTable({
-        pageLength: 20,
+        pageLength: 50,
         order: [[3, 'desc']], // Sort by ASL Score by default
         columnDefs: [
             { className: 'text-center', targets: [0, 3, 4, 5] }
@@ -262,18 +267,25 @@ function initializeDataTable() {
     });
 }
 
-// Generate rank change indicator
-function getRankChange(rank) {
-    // Simulate rank changes based on rank position
-    const changes = [0, -1, 1, 2, -2, 1, -1, 3, 0, -3, 2, -1, 1, 0, -2, 1, -1, 2, 0, -1];
-    const change = changes[rank % changes.length] || 0;
-    
-    if (change > 0) {
-        return `<span class="rank-change rank-up" title="Up ${change} positions">↗${change}</span>`;
-    } else if (change < 0) {
-        return `<span class="rank-change rank-down" title="Down ${Math.abs(change)} positions">↘${Math.abs(change)}</span>`;
-    } else {
+// Generate rank change indicator from model data
+function getRankChange(model) {
+    if (!model.rankChange) {
         return `<span class="rank-change rank-stable" title="No change">—</span>`;
+    }
+    
+    const rankChangeStr = model.rankChange.toString();
+    
+    if (rankChangeStr.startsWith('+')) {
+        const change = rankChangeStr.substring(1);
+        return `<span class="rank-change rank-up" title="Up ${change} positions">↗${change}</span>`;
+    } else if (rankChangeStr.startsWith('-')) {
+        const change = rankChangeStr.substring(1);
+        return `<span class="rank-change rank-down" title="Down ${change} positions">↘${change}</span>`;
+    } else if (rankChangeStr === '=') {
+        return `<span class="rank-change rank-stable" title="No change">—</span>`;
+    } else {
+        // Handle cases without + or - prefix (assume positive)
+        return `<span class="rank-change rank-up" title="Up ${rankChangeStr} positions">↗${rankChangeStr}</span>`;
     }
 }
 
@@ -302,7 +314,7 @@ function createTableRow(model) {
         <td>${model.organization || 'N/A'}</td>
         <td class="score-cell">
             <span class="badge bg-primary">${model.aslScore.toFixed(3)}</span>
-            ${getRankChange(model.rank)}
+            ${getRankChange(model)}
         </td>
         <td>${(model.successRate * 100).toFixed(1)}%</td>
         <td>${model.robustnessScore.toFixed(3)}</td>
