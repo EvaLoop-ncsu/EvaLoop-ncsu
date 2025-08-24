@@ -3,29 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVALOOP - Evaluating LLM Robustness in Programming</title>
+    <title>Leaderboard - EVALOOP</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="EVALOOP: A comprehensive evaluation framework for assessing LLM programming robustness using the ASL (Average Success Level) metric">
-    <meta name="keywords" content="LLM evaluation, programming robustness, ASL metric, code generation, AI benchmarking">
-    <meta name="author" content="EVALOOP Research Team">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="EVALOOP - LLM Programming Robustness Evaluation">
-    <meta property="og:description" content="Comprehensive evaluation framework using ASL metric to assess LLM programming capabilities">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://evaloop.github.io">
+    <meta name="description" content="EVALOOP Leaderboard: Compare LLM performance rankings based on ASL scores and programming robustness metrics">
+    <meta name="keywords" content="LLM leaderboard, ASL scores, model comparison, programming benchmarks">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <!-- Google Fonts - Inter -->
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- JetBrains Mono for code -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <style>
+        .leaderboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 2rem;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .model-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .trend-up { color: #22c55e; }
+        .trend-down { color: #ef4444; }
+        .trend-stable { color: #f59e0b; }
+        
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 1rem;
+        }
+        
+        .dataTables_wrapper .dataTables_length {
+            margin-bottom: 1rem;
+        }
+        
+        #leaderboardTable th {
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        #leaderboardTable th:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .score-cell {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .org-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .expand-btn {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .expand-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .details-row {
+            background-color: #f9fafb;
+        }
+        
+        .rank-change {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            white-space: nowrap;
+        }
+        
+        .rank-up {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+        
+        .rank-down {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .rank-stable {
+            background-color: #f3f4f6;
+            color: #6b7280;
+        }
+        
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+            
+            .export-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -40,10 +149,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link" href="home.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                        <a class="nav-link active" href="index.html">Leaderboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="method.html">Method</a>
@@ -64,175 +173,230 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section py-5 bg-gradient">
-        <div class="container">
-            <div class="row align-items-center min-vh-50">
-                <div class="col-lg-7">
-                    <h1 class="display-4 fw-bold mb-4">
-                        EVALOOP: Evaluating LLM Robustness in Programming
-                    </h1>
-                    <p class="lead mb-4 text-secondary">
-                        A novel framework assessing LLM robustness from a <span class="badge bg-primary">Self-consistency</span> 
-                        perspective through iterative code generation and summarization loops.
-                    </p>
-                    <p class="mb-4">
-                        EVALOOP leverages the natural duality between software engineering tasks to measure robustness 
-                        without external adversarial attacks. The ASL (Average number of Sustainable Loops) metric 
-                        quantifies how well models maintain functional coherence through transformation cycles.
-                    </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="leaderboard.html" class="btn btn-primary btn-lg">
-                            <i class="bi bi-trophy"></i> View Leaderboard
-                        </a>
-                        <a href="https://arxiv.org/pdf/2505.12185" class="btn btn-outline-primary btn-lg" target="_blank">
-                            <i class="bi bi-file-earmark-pdf"></i> Read Paper
-                        </a>
-                        <a href="https://github.com/EvaLoop-ncsu" class="btn btn-outline-secondary btn-lg" target="_blank">
-                            <i class="bi bi-download"></i> Download Dataset
-                        </a>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Quick Stats -->
+        <div class="row mb-4">
+            <div class="col-md-3 col-6 mb-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-primary mb-0" id="totalModels">0</h3>
+                        <small class="text-muted">Total Models</small>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <div class="stats-container p-4">
-                        <div class="row g-4">
-                            <div class="col-6">
-                                <div class="stat-card text-center p-3">
-                                    <h3 class="display-6 fw-bold text-primary counter" data-target="17">0</h3>
-                                    <p class="mb-0 text-muted">Models Evaluated</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="stat-card text-center p-3">
-                                    <h3 class="display-6 fw-bold text-success counter" data-target="7.457">0</h3>
-                                    <p class="mb-0 text-muted">Highest ASL Score</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="stat-card text-center p-3">
-                                    <h3 class="display-6 fw-bold text-warning counter" data-target="378">0</h3>
-                                    <p class="mb-0 text-muted">Test Tasks</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="stat-card text-center p-3">
-                                    <h3 class="display-6 fw-bold text-info counter" data-target="10">0</h3>
-                                    <p class="mb-0 text-muted">Max Loops</p>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-success mb-0" id="avgASL">0</h3>
+                        <small class="text-muted">Average ASL (max 10)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-warning mb-0" id="highestASL">0</h3>
+                        <small class="text-muted">Highest ASL (max 10)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-info mb-0" id="lastUpdate">-</h3>
+                        <small class="text-muted">Last Updated</small>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Key Features Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Why EVALOOP?</h2>
-                <p class="lead text-secondary">Comprehensive evaluation framework for LLM programming capabilities</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-card h-100 p-4">
-                        <div class="feature-icon mb-3">
-                            <i class="bi bi-speedometer2 display-4 text-primary"></i>
-                        </div>
-                        <h4>Self-consistency Testing</h4>
-                        <p class="text-muted">
-                            Evaluates robustness through code generation-summarization loops without external attacks
-                        </p>
-                    </div>
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row align-items-end">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Organization Filter</label>
+                    <select class="form-select" id="orgFilter">
+                        <option value="">All Organizations</option>
+                        <option value="Alibaba">Alibaba</option>
+                        <option value="Baichuan">Baichuan</option>
+                        <option value="ByteDance">ByteDance</option>
+                        <option value="Codestral">Codestral</option>
+                        <option value="DeepSeek">DeepSeek</option>
+                        <option value="Google">Google</option>
+                        <option value="inclusionAI">inclusionAI</option>
+                        <option value="Janhq">Janhq</option>
+                        <option value="LM Studio Community">LM Studio Community</option>
+                        <option value="Meta">Meta</option>
+                        <option value="Microsoft">Microsoft</option>
+                        <option value="Mistral">Mistral</option>
+                        <option value="Moonlight">Moonlight</option>
+                        <option value="Mungert">Mungert</option>
+                        <option value="OpenAI">OpenAI</option>
+                        <option value="OpenBMB">OpenBMB</option>
+                        <option value="Zhipu">Zhipu</option>
+                    </select>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-card h-100 p-4">
-                        <div class="feature-icon mb-3">
-                            <i class="bi bi-shield-check display-4 text-success"></i>
-                        </div>
-                        <h4>Unified Metric (ASL)</h4>
-                        <p class="text-muted">
-                            Average number of Sustainable Loops provides consistent robustness measurement across all models
-                        </p>
-                    </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">ASL Score Range</label>
+                    <select class="form-select" id="scoreFilter">
+                        <option value="">All Scores</option>
+                        <option value="8-10">8-10 (Excellent)</option>
+                        <option value="6-8">6-8 (Very Good)</option>
+                        <option value="5-6">5-6 (Good)</option>
+                        <option value="4-5">4-5 (Fair)</option>
+                        <option value="0-4">&lt;4 (Needs Improvement)</option>
+                    </select>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-card h-100 p-4">
-                        <div class="feature-icon mb-3">
-                            <i class="bi bi-graph-up display-4 text-warning"></i>
-                        </div>
-                        <h4>Novel Insights</h4>
-                        <p class="text-muted">
-                            Reveals that robustness doesn't always align with initial performance, providing deeper understanding
-                        </p>
-                    </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Sort By</label>
+                    <select class="form-select" id="sortBy">
+                        <option value="asl">ASL Score</option>
+                        <option value="success">Pass Rate</option>
+                        <option value="robustness">Robustness Score</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <button class="btn btn-primary w-100" onclick="applyFilters()">
+                        <i class="bi bi-funnel"></i> Apply Filters
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Top Models Preview -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Top Performing Models</h2>
-                <p class="lead text-secondary">Latest ASL scores from our comprehensive evaluation</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="card shadow-sm">
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table table-hover mb-0">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th class="text-center" width="60">Rank</th>
-                                            <th>Model</th>
-                                            <th class="text-center">ASL Score</th>
-                                            <th class="text-center">Success Rate</th>
-                                            <th class="text-center">Trend</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="topModelsTable">
-                                        <!-- Data will be loaded dynamically -->
-                                    </tbody>
-                                </table>
+        <!-- Visualization Tabs -->
+        <ul class="nav nav-tabs mb-4" id="vizTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="table-tab" data-bs-toggle="tab" data-bs-target="#table" type="button">
+                    <i class="bi bi-table"></i> Table View
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart" type="button">
+                    <i class="bi bi-bar-chart"></i> Chart View
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button">
+                    <i class="bi bi-columns-gap"></i> Comparison
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="vizTabContent">
+            <!-- Table View -->
+            <div class="tab-pane fade show active" id="table" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h5 class="mb-0">Model Rankings</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="export-buttons justify-content-md-end">
+                                    <button class="btn btn-sm btn-outline-primary" onclick="exportData('csv')">
+                                        <i class="bi bi-file-earmark-csv"></i> CSV
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="exportData('json')">
+                                        <i class="bi bi-filetype-json"></i> JSON
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showBibTeX()">
+                                        <i class="bi bi-quote"></i> BibTeX
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-footer bg-white">
-                            <div class="text-center">
-                                <a href="leaderboard.html" class="btn btn-primary">
-                                    View Full Leaderboard <i class="bi bi-arrow-right"></i>
-                                </a>
-                            </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="leaderboardTable" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="60">Rank</th>
+                                        <th>Model</th>
+                                        <th>Organization</th>
+                                        <th>ASL Score</th>
+                                        <th>Pass Rate</th>
+                                        <th>Robustness</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leaderboardBody">
+                                    <!-- Data will be loaded dynamically -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Call to Action -->
-    <section class="py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4">Ready to Explore?</h2>
-            <p class="lead mb-4">
-                Dive deep into our evaluation results and discover how different LLMs perform in programming tasks
-            </p>
-            <div class="d-flex gap-3 justify-content-center flex-wrap">
-                <a href="method.html" class="btn btn-light btn-lg">
-                    <i class="bi bi-book"></i> Learn Our Method
-                </a>
-                <a href="results.html" class="btn btn-outline-light btn-lg">
-                    <i class="bi bi-bar-chart"></i> View Detailed Results
-                </a>
+            <!-- Chart View -->
+            <div class="tab-pane fade" id="chart" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">ASL Score Distribution</h5>
+                        <div class="chart-container">
+                            <canvas id="aslChart"></canvas>
+                        </div>
+                        <hr>
+                        <h5 class="card-title mb-4">Performance by Category</h5>
+                        <div class="chart-container">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison View -->
+            <div class="tab-pane fade" id="comparison" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Model Comparison</h5>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <select class="form-select" id="compareModel1">
+                                    <option value="">Select First Model</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" id="compareModel2">
+                                    <option value="">Select Second Model</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="comparisonResult"></div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- BibTeX Modal -->
+    <div class="modal fade" id="bibtexModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">BibTeX Citation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <pre id="bibtexContent" class="bg-light p-3 rounded">@article{evaloop2024,
+  title={EVALOOP: Evaluating LLM Robustness in Programming},
+  author={Research Team},
+  journal={arXiv preprint},
+  year={2024},
+  note={https://evaloop.github.io}
+}</pre>
+                    <button class="btn btn-primary w-100" onclick="copyBibTeX()">
+                        <i class="bi bi-clipboard"></i> Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-auto">
+    <footer class="bg-dark text-white py-4 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -261,9 +425,13 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/leaderboard.js"></script>
 </body>
 </html>

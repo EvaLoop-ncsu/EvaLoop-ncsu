@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVALOOP - Evaluating LLM Robustness in Programming</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="EVALOOP: A comprehensive evaluation framework for assessing LLM programming robustness using the ASL (Average Success Level) metric">
+    <meta name="keywords" content="LLM evaluation, programming robustness, ASL metric, code generation, AI benchmarking">
+    <meta name="author" content="EVALOOP Research Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="EVALOOP - LLM Programming Robustness Evaluation">
+    <meta property="og:description" content="Comprehensive evaluation framework using ASL metric to assess LLM programming capabilities">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://evaloop.github.io">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- JetBrains Mono for code -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <span class="text-primary">EVAL</span><span class="text-secondary">OOP</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="method.html">Method</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="results.html">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link btn btn-outline-primary btn-sm px-3" href="https://github.com/EvaLoop-ncsu" target="_blank">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5 bg-gradient">
+        <div class="container">
+            <div class="row align-items-center min-vh-50">
+                <div class="col-lg-7">
+                    <h1 class="display-4 fw-bold mb-4">
+                        EVALOOP: Evaluating LLM Robustness in Programming
+                    </h1>
+                    <p class="lead mb-4 text-secondary">
+                        A novel framework assessing LLM robustness from a <span class="badge bg-primary">Self-consistency</span> 
+                        perspective through iterative code generation and summarization loops.
+                    </p>
+                    <p class="mb-4">
+                        EVALOOP leverages the natural duality between software engineering tasks to measure robustness 
+                        without external adversarial attacks. The ASL (Average number of Sustainable Loops) metric 
+                        quantifies how well models maintain functional coherence through transformation cycles.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="leaderboard.html" class="btn btn-primary btn-lg">
+                            <i class="bi bi-trophy"></i> View Leaderboard
+                        </a>
+                        <a href="https://arxiv.org/pdf/2505.12185" class="btn btn-outline-primary btn-lg" target="_blank">
+                            <i class="bi bi-file-earmark-pdf"></i> Read Paper
+                        </a>
+                        <a href="https://github.com/EvaLoop-ncsu" class="btn btn-outline-secondary btn-lg" target="_blank">
+                            <i class="bi bi-download"></i> Download Dataset
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="stats-container p-4">
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="stat-card text-center p-3">
+                                    <h3 class="display-6 fw-bold text-primary counter" data-target="17">0</h3>
+                                    <p class="mb-0 text-muted">Models Evaluated</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-card text-center p-3">
+                                    <h3 class="display-6 fw-bold text-success counter" data-target="7.457">0</h3>
+                                    <p class="mb-0 text-muted">Highest ASL Score</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-card text-center p-3">
+                                    <h3 class="display-6 fw-bold text-warning counter" data-target="378">0</h3>
+                                    <p class="mb-0 text-muted">Test Tasks</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-card text-center p-3">
+                                    <h3 class="display-6 fw-bold text-info counter" data-target="10">0</h3>
+                                    <p class="mb-0 text-muted">Max Loops</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Why EVALOOP?</h2>
+                <p class="lead text-secondary">Comprehensive evaluation framework for LLM programming capabilities</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card h-100 p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-speedometer2 display-4 text-primary"></i>
+                        </div>
+                        <h4>Self-consistency Testing</h4>
+                        <p class="text-muted">
+                            Evaluates robustness through code generation-summarization loops without external attacks
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100 p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-shield-check display-4 text-success"></i>
+                        </div>
+                        <h4>Unified Metric (ASL)</h4>
+                        <p class="text-muted">
+                            Average number of Sustainable Loops provides consistent robustness measurement across all models
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100 p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-graph-up display-4 text-warning"></i>
+                        </div>
+                        <h4>Novel Insights</h4>
+                        <p class="text-muted">
+                            Reveals that robustness doesn't always align with initial performance, providing deeper understanding
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Models Preview -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Top Performing Models</h2>
+                <p class="lead text-secondary">Latest ASL scores from our comprehensive evaluation</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="text-center" width="60">Rank</th>
+                                            <th>Model</th>
+                                            <th class="text-center">ASL Score</th>
+                                            <th class="text-center">Success Rate</th>
+                                            <th class="text-center">Trend</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="topModelsTable">
+                                        <!-- Data will be loaded dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="text-center">
+                                <a href="leaderboard.html" class="btn btn-primary">
+                                    View Full Leaderboard <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Ready to Explore?</h2>
+            <p class="lead mb-4">
+                Dive deep into our evaluation results and discover how different LLMs perform in programming tasks
+            </p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="method.html" class="btn btn-light btn-lg">
+                    <i class="bi bi-book"></i> Learn Our Method
+                </a>
+                <a href="results.html" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-bar-chart"></i> View Detailed Results
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="mb-3">EVALOOP</h5>
+                    <p class="text-muted">
+                        Advancing LLM evaluation through comprehensive robustness testing
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="mb-3">
+                        <a href="https://github.com/EvaLoop-ncsu" class="text-white me-3">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                        <a href="#" class="text-white me-3">
+                            <i class="bi bi-twitter"></i> Twitter
+                        </a>
+                        <a href="about.html" class="text-white">
+                            <i class="bi bi-envelope"></i> Contact
+                        </a>
+                    </div>
+                    <p class="text-muted mb-0">
+                        © 2024 EVALOOP Research Team. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
