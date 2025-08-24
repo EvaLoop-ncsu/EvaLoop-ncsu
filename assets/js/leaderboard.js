@@ -509,15 +509,14 @@ function exportData(format) {
 
 // Convert data to CSV
 function convertToCSV(data) {
-    const headers = ['Rank', 'Model', 'Organization', 'ASL Score', 'Success Rate', 'Avg Time', 'Robustness Score'];
+    const headers = ['Rank', 'Model', 'Organization', 'ASL Score', 'Success Rate', 'Robustness Score'];
     const rows = data.map(m => [
         m.rank,
         m.name,
-        m.organization,
-        m.aslScore,
-        m.successRate,
-        m.avgTime,
-        m.robustnessScore
+        m.organization || '',
+        m.aslScore.toFixed(3),
+        (m.successRate * 100).toFixed(1),
+        m.robustnessScore.toFixed(3)
     ]);
     
     const csvContent = [
