@@ -88,130 +88,6 @@ function loadEmbeddedData() {
                         "debugging": 82.3
                     }
                 }
-            },
-            {
-                "rank": 3,
-                "name": "gpt-4.1",
-                "organization": "OpenAI",
-                "aslScore": 7.356,
-                "successRate": 0.841,
-                "avgTime": 1.35,
-                "robustnessScore": 85.1,
-                "testDate": "2024-05-15",
-                "trend": "stable",
-                "rankChange": "0",
-                "details": {
-                    "totalTests": 378,
-                    "passed": 318,
-                    "failed": 60,
-                    "categories": {
-                        "algorithms": 85.3,
-                        "dataStructures": 84.7,
-                        "systemDesign": 82.2,
-                        "debugging": 84.6
-                    }
-                }
-            },
-            {
-                "rank": 4,
-                "name": "o4-mini",
-                "organization": "OpenAI",
-                "aslScore": 7.320,
-                "successRate": 0.835,
-                "avgTime": 1.12,
-                "robustnessScore": 84.8,
-                "testDate": "2024-05-15",
-                "trend": "up",
-                "rankChange": "+3",
-                "details": {
-                    "totalTests": 378,
-                    "passed": 316,
-                    "failed": 62,
-                    "categories": {
-                        "algorithms": 84.4,
-                        "dataStructures": 83.9,
-                        "systemDesign": 82.7,
-                        "debugging": 83.3
-                    }
-                }
-            },
-            {
-                "rank": 5,
-                "name": "gpt-4.1-mini",
-                "organization": "OpenAI",
-                "aslScore": 7.291,
-                "successRate": 0.823,
-                "avgTime": 1.08,
-                "robustnessScore": 83.2,
-                "testDate": "2024-05-15",
-                "trend": "up",
-                "details": {
-                    "totalTests": 378,
-                    "passed": 311,
-                    "failed": 67,
-                    "categories": {
-                        "algorithms": 83.7,
-                        "dataStructures": 82.2,
-                        "systemDesign": 81.1,
-                        "debugging": 82.4
-                    }
-                }
-            },
-            {
-                "rank": 6,
-                "name": "o1",
-                "organization": "OpenAI",
-                "aslScore": 7.288,
-                "successRate": 0.838,
-                "avgTime": 1.42,
-                "robustnessScore": 82.3,
-                "testDate": "2024-05-15",
-                "trend": "stable"
-            },
-            {
-                "rank": 7,
-                "name": "DeepSeek-V2.5",
-                "organization": "DeepSeek",
-                "aslScore": 7.267,
-                "successRate": 0.814,
-                "avgTime": 1.37,
-                "robustnessScore": 82.2,
-                "testDate": "2024-05-15",
-                "trend": "up"
-            },
-            {
-                "rank": 8,
-                "name": "o1-mini",
-                "organization": "OpenAI",
-                "aslScore": 7.257,
-                "successRate": 0.828,
-                "avgTime": 1.24,
-                "robustnessScore": 81.9,
-                "testDate": "2024-05-15",
-                "trend": "up"
-            },
-            {
-                "rank": 9,
-                "name": "gpt-4o",
-                "organization": "OpenAI",
-                "aslScore": 7.040,
-                "successRate": 0.792,
-                "avgTime": 1.18,
-                "robustnessScore": 78.1,
-                "testDate": "2024-05-15",
-                "trend": "stable"
-            },
-            {
-                "rank": 10,
-                "name": "gpt-4-turbo",
-                "organization": "OpenAI",
-                "aslScore": 6.821,
-                "successRate": 0.769,
-                "avgTime": 1.33,
-                "robustnessScore": 75.3,
-                "testDate": "2024-05-15",
-                "trend": "down",
-                "rankChange": "-2"
             }
         ]
     };
@@ -250,7 +126,9 @@ function initializeDataTable() {
         pageLength: 50,
         order: [[3, 'desc']], // Sort by ASL Score by default
         columnDefs: [
-            { className: 'text-center', targets: [0, 3, 4, 5] }
+            { className: 'text-center', targets: [0, 3, 4, 5, 6] },
+            { orderable: false, targets: [0, 1, 2] }, // Disable sorting for Rank, Model, Organization
+            { orderable: true, targets: [3, 4, 5, 6] } // Enable sorting for score columns
         ],
         language: {
             search: 'Search models:',
@@ -289,10 +167,75 @@ function getRankChange(model) {
     }
 }
 
+// Generate rank change indicator for robustness score
+function getRobustnessRankChange(model) {
+    if (!model.rankByRobustnessChange) {
+        return `<span class="rank-change rank-stable" title="No change">—</span>`;
+    }
+    
+    const rankChangeStr = model.rankByRobustnessChange.toString();
+    
+    if (rankChangeStr.startsWith('+')) {
+        const change = rankChangeStr.substring(1);
+        return `<span class="rank-change rank-up" title="Up ${change} positions">↗${change}</span>`;
+    } else if (rankChangeStr.startsWith('-')) {
+        const change = rankChangeStr.substring(1);
+        return `<span class="rank-change rank-down" title="Down ${change} positions">↘${change}</span>`;
+    } else if (rankChangeStr === '=') {
+        return `<span class="rank-change rank-stable" title="No change">—</span>`;
+    } else {
+        // Handle cases without + or - prefix (assume positive)
+        return `<span class="rank-change rank-up" title="Up ${rankChangeStr} positions">↗${rankChangeStr}</span>`;
+    }
+}
+
+// Generate rank change indicator for semantic similarity score
+function getSemanticRankChange(model) {
+    if (!model.rankBySemanticSimilarityChange) {
+        return `<span class="rank-change rank-stable" title="No change">—</span>`;
+    }
+    
+    const rankChangeStr = model.rankBySemanticSimilarityChange.toString();
+    
+    if (rankChangeStr.startsWith('+')) {
+        const change = rankChangeStr.substring(1);
+        return `<span class="rank-change rank-up" title="Up ${change} positions">↗${change}</span>`;
+    } else if (rankChangeStr.startsWith('-')) {
+        const change = rankChangeStr.substring(1);
+        return `<span class="rank-change rank-down" title="Down ${change} positions">↘${change}</span>`;
+    } else if (rankChangeStr === '=') {
+        return `<span class="rank-change rank-stable" title="No change">—</span>`;
+    } else {
+        // Handle cases without + or - prefix (assume positive)
+        return `<span class="rank-change rank-up" title="Up ${rankChangeStr} positions">↗${rankChangeStr}</span>`;
+    }
+}
+
 // Create table row
 function createTableRow(model) {
     const row = document.createElement('tr');
     row.id = `model-${model.rank}`;
+    
+    // Add clickable functionality if link exists
+    if (model.link) {
+        row.style.cursor = 'pointer';
+        row.title = `Click to visit ${model.name} page`;
+        row.addEventListener('click', function(e) {
+            // Don't trigger if clicking on interactive elements
+            if (!e.target.closest('.sortable-header, .expand-btn, .rank-change')) {
+                window.open(model.link, '_blank');
+            }
+        });
+        
+        // Add hover effect
+        row.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#f8f9fa';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '';
+        });
+    }
     
     // Determine rank badge
     let rankBadge = '';
@@ -309,15 +252,22 @@ function createTableRow(model) {
     row.innerHTML = `
         <td>${rankBadge}</td>
         <td class="text-start">
-            <strong>${model.name}</strong>
+            <strong>${model.name}</strong>${model.link ? ' <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.8rem;" title="Click to open model page"></i>' : ''}
         </td>
         <td>${model.organization || 'N/A'}</td>
         <td class="score-cell">
             <span class="badge bg-primary">${model.aslScore.toFixed(3)}</span>
             ${getRankChange(model)}
         </td>
+        <td class="score-cell">
+            <span class="badge bg-success">${model.robustnessScore.toFixed(3)}</span>
+            ${getRobustnessRankChange(model)}
+        </td>
+        <td class="score-cell">
+            <span class="badge bg-info">${model.semanticSimilarityScore.toFixed(3)}</span>
+            ${getSemanticRankChange(model)}
+        </td>
         <td>${(model.successRate * 100).toFixed(1)}%</td>
-        <td>${model.robustnessScore.toFixed(3)}</td>
     `;
     
     return row;
@@ -340,35 +290,39 @@ function toggleDetails(rank) {
         const detailsRow = document.createElement('tr');
         detailsRow.classList.add('details-row');
         detailsRow.innerHTML = `
-            <td colspan="6">
-                <div class="p-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h6 class="mb-3">Model Performance</h6>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Rank:</span>
-                                <strong>#${model.rank}</strong>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>ASL Score:</span>
-                                <strong class="text-primary">${model.aslScore.toFixed(3)}</strong>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Success Rate:</span>
-                                <strong class="text-success">${(model.successRate * 100).toFixed(1)}%</strong>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Robustness Score:</span>
-                                <strong class="text-info">${model.robustnessScore.toFixed(3)}</strong>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Organization:</span>
-                                <strong>${model.organization || 'Not specified'}</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </td>
+                            <td colspan="7">
+                                <div class="p-3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="mb-3">Model Performance</h6>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Rank:</span>
+                                                <strong>#${model.rank}</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>ASL Std:</span>
+                                                <strong class="text-primary">${model.aslScore.toFixed(3)}</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>ASL Base (Robustness):</span>
+                                                <strong class="text-success">${model.robustnessScore.toFixed(3)}</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>ASL Semantic:</span>
+                                                <strong class="text-info">${model.semanticSimilarityScore.toFixed(3)}</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Success Rate:</span>
+                                                <strong class="text-success">${(model.successRate * 100).toFixed(1)}%</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Organization:</span>
+                                                <strong>${model.organization || 'Not specified'}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
         `;
         row.parentNode.insertBefore(detailsRow, row.nextSibling);
     }
@@ -386,7 +340,7 @@ function initializeCharts() {
             data: {
                 labels: top10Models.map(m => m.name),
                 datasets: [{
-                    label: 'ASL Score',
+                    label: 'ASL Std',
                     data: top10Models.map(m => m.aslScore),
                     backgroundColor: 'rgba(37, 99, 235, 0.8)',
                     borderColor: 'rgba(37, 99, 235, 1)',
@@ -403,7 +357,7 @@ function initializeCharts() {
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return `ASL Score: ${context.raw.toFixed(3)}`;
+                                return `ASL Std: ${context.raw.toFixed(3)}`;
                             }
                         }
                     }
@@ -432,13 +386,14 @@ function initializeCharts() {
             categoryChart = new Chart(categoryCtx, {
                 type: 'radar',
                 data: {
-                    labels: ['ASL Score', 'Success Rate', 'Robustness Score'],
+                    labels: ['ASL Std', 'Success Rate', 'ASL Base', 'ASL Semantic'],
                     datasets: top5Models.map((model, index) => ({
                         label: model.name,
                         data: [
                             model.aslScore,
                             model.successRate * 100,
-                            model.robustnessScore
+                            model.robustnessScore,
+                            model.semanticSimilarityScore
                         ],
                         backgroundColor: `rgba(${index * 45}, ${99 + index * 30}, ${235 - index * 30}, 0.2)`,
                         borderColor: `rgba(${index * 45}, ${99 + index * 30}, ${235 - index * 30}, 1)`,
@@ -479,25 +434,36 @@ function applyFilters() {
         dataTable.column(2).search(orgFilter);
     }
     
+    // Clear any existing score range filters
+    $.fn.dataTable.ext.search = $.fn.dataTable.ext.search.filter(function(fn) {
+        return fn.name !== 'scoreRangeFilter';
+    });
+    
     // Apply score range filter
     if (scoreFilter) {
         const [min, max] = scoreFilter.split('-').map(Number);
-        $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+        const scoreRangeFilter = function(settings, data, dataIndex) {
             const score = parseFloat(data[3]) || 0;
             return score >= min && score <= max;
-        });
-    } else {
-        $.fn.dataTable.ext.search.pop();
+        };
+        scoreRangeFilter.name = 'scoreRangeFilter';
+        $.fn.dataTable.ext.search.push(scoreRangeFilter);
     }
     
     // Apply sorting
-    let columnIndex = 3; // Default to ASL Score
+    let columnIndex = 3; // Default to ASL Std
     switch(sortBy) {
-        case 'success':
-            columnIndex = 4;
+        case 'aslStd':
+            columnIndex = 3; // ASL Std
             break;
-        case 'robustness':
-            columnIndex = 5;
+        case 'aslBase':
+            columnIndex = 4; // ASL Base
+            break;
+        case 'aslSemantic':
+            columnIndex = 5; // ASL Semantic
+            break;
+        case 'success':
+            columnIndex = 6; // Pass Rate
             break;
     }
     dataTable.order([columnIndex, 'desc']).draw();
@@ -521,14 +487,15 @@ function exportData(format) {
 
 // Convert data to CSV
 function convertToCSV(data) {
-    const headers = ['Rank', 'Model', 'Organization', 'ASL Score', 'Success Rate', 'Robustness Score'];
+    const headers = ['Rank', 'Model', 'Organization', 'ASL Std', 'ASL Base', 'ASL Semantic', 'Pass Rate'];
     const rows = data.map(m => [
         m.rank,
         m.name,
         m.organization || '',
         m.aslScore.toFixed(3),
-        (m.successRate * 100).toFixed(1),
-        m.robustnessScore.toFixed(3)
+        m.robustnessScore.toFixed(3),
+        m.semanticSimilarityScore.toFixed(3),
+        (m.successRate * 100).toFixed(1)
     ]);
     
     const csvContent = [
@@ -614,16 +581,20 @@ function compareModels() {
                     </div>
                     <div class="card-body">
                         <div class="mb-2">
-                            <strong>ASL Score:</strong> 
+                            <strong>ASL Std:</strong> 
                             <span class="float-end badge bg-primary">${model1.aslScore.toFixed(3)}</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>ASL Base:</strong> 
+                            <span class="float-end badge bg-success">${model1.robustnessScore.toFixed(3)}</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>ASL Semantic:</strong> 
+                            <span class="float-end badge bg-info">${model1.semanticSimilarityScore.toFixed(3)}</span>
                         </div>
                         <div class="mb-2">
                             <strong>Success Rate:</strong> 
                             <span class="float-end">${(model1.successRate * 100).toFixed(1)}%</span>
-                        </div>
-                        <div class="mb-2">
-                            <strong>Robustness:</strong> 
-                            <span class="float-end">${model1.robustnessScore.toFixed(1)}</span>
                         </div>
                     </div>
                 </div>
@@ -635,16 +606,20 @@ function compareModels() {
                     </div>
                     <div class="card-body">
                         <div class="mb-2">
-                            <strong>ASL Score:</strong> 
+                            <strong>ASL Std:</strong> 
                             <span class="float-end badge bg-secondary">${model2.aslScore.toFixed(3)}</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>ASL Base:</strong> 
+                            <span class="float-end badge bg-success">${model2.robustnessScore.toFixed(3)}</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>ASL Semantic:</strong> 
+                            <span class="float-end badge bg-info">${model2.semanticSimilarityScore.toFixed(3)}</span>
                         </div>
                         <div class="mb-2">
                             <strong>Success Rate:</strong> 
                             <span class="float-end">${(model2.successRate * 100).toFixed(1)}%</span>
-                        </div>
-                        <div class="mb-2">
-                            <strong>Robustness:</strong> 
-                            <span class="float-end">${model2.robustnessScore.toFixed(1)}</span>
                         </div>
                     </div>
                 </div>
@@ -653,7 +628,7 @@ function compareModels() {
         <div class="mt-4 p-3 bg-light rounded">
             <h6>Comparison Summary</h6>
             <p class="mb-1">
-                <strong>ASL Score Difference:</strong> 
+                <strong>ASL Std Difference:</strong> 
                 ${Math.abs(model1.aslScore - model2.aslScore).toFixed(3)} points
                 ${model1.aslScore > model2.aslScore ? 
                     `<span class="text-success">(${model1.name} leads)</span>` : 
@@ -676,6 +651,43 @@ function initializeEventListeners() {
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+    
+    // Add click event listeners to sortable headers
+    document.querySelectorAll('.sortable-header').forEach(header => {
+        header.addEventListener('click', function() {
+            const columnIndex = parseInt(this.getAttribute('data-column'));
+            handleColumnSort(columnIndex, this);
+        });
+    });
+}
+
+// Handle column sorting with toggle between asc/desc
+function handleColumnSort(columnIndex, headerElement) {
+    // Check current sort state stored as data attribute
+    let currentSort = headerElement.getAttribute('data-sort') || 'none';
+    let sortDirection = 'asc'; // Default to descending (bigger to smaller)
+    
+    // Toggle sort direction
+    if (currentSort === 'asc') {
+        sortDirection = 'desc';
+    } else {
+        sortDirection = 'asc';
+    }
+    
+    // Clear all sort states from headers
+    document.querySelectorAll('.sortable-header').forEach(header => {
+        header.removeAttribute('data-sort');
+        header.style.backgroundColor = '';
+    });
+    
+    // Set current sort state and visual feedback
+    headerElement.setAttribute('data-sort', sortDirection);
+    headerElement.style.backgroundColor = '#e3f2fd';
+    
+    // Apply the sort to DataTable
+    if (dataTable) {
+        dataTable.order([columnIndex, sortDirection]).draw();
+    }
 }
 
 // Format date

@@ -78,6 +78,37 @@
             background-color: #f3f4f6;
         }
         
+        .sortable-header {
+            position: relative;
+            cursor: pointer !important;
+            transition: background-color 0.2s ease;
+        }
+        
+        .sortable-header:hover {
+            background-color: #e3f2fd !important;
+        }
+        
+        .sort-icon {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+        }
+        
+        .sortable-header:hover .sort-icon {
+            opacity: 1;
+        }
+        
+        .sort-icon.asc {
+            opacity: 1;
+            color: #1976d2;
+        }
+        
+        .sort-icon.desc {
+            opacity: 1;
+            color: #1976d2;
+        }
+        
         .score-cell {
             font-weight: 600;
             font-size: 1.1rem;
@@ -123,6 +154,18 @@
         .rank-stable {
             background-color: #f3f4f6;
             color: #6b7280;
+        }
+        
+        /* Clickable row styles */
+        tr[style*="cursor: pointer"]:hover {
+            background-color: #f8f9fa !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+        
+        tr[style*="cursor: pointer"] {
+            transition: all 0.2s ease;
         }
         
         @media (max-width: 768px) {
@@ -250,9 +293,10 @@
                 <div class="col-md-3 mb-3">
                     <label class="form-label">Sort By</label>
                     <select class="form-select" id="sortBy">
-                        <option value="asl">ASL Score</option>
+                        <option value="aslStd">ASL Std</option>
+                        <option value="aslBase">ASL Base</option>
+                        <option value="aslSemantic">ASL Semantic</option>
                         <option value="success">Pass Rate</option>
-                        <option value="robustness">Robustness Score</option>
                     </select>
                 </div>
                 <div class="col-md-3 mb-3">
@@ -270,11 +314,11 @@
                     <i class="bi bi-table"></i> Table View
                 </button>
             </li>
-            <li class="nav-item" role="presentation">
+            <!-- <li class="nav-item" role="presentation">
                 <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart" type="button">
                     <i class="bi bi-bar-chart"></i> Chart View
                 </button>
-            </li>
+            </li> -->
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button">
                     <i class="bi bi-columns-gap"></i> Comparison
@@ -312,12 +356,13 @@
                             <table id="leaderboardTable" class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th width="60">Rank</th>
-                                        <th>Model</th>
-                                        <th>Organization</th>
-                                        <th>ASL Score</th>
-                                        <th>Pass Rate</th>
-                                        <th>Robustness</th>
+                                        <th width="60" data-bs-toggle="tooltip" data-bs-placement="top" title="Model ranking position sorted by ASL Std">Rank</th>
+                                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="Model name and version" data-column="1">Model</th>
+                                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="Organization of the model" data-column="2">Organization</th>
+                                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="ASL Standard Score, the arrow indicates the rank change compared to the pass rate rank" data-column="3" class="sortable-header">ASL Std</th>
+                                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="ASL Base Score, the arrow indicates the rank change compared to the pass rate rank" data-column="4" class="sortable-header">ASL Base</th>
+                                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="ASL Semantic Score, the arrow indicates the rank change compared to the pass rate rank" data-column="5" class="sortable-header">ASL Semantic</th>
+                                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="Percentage of test cases passed by the model's first generated solution." data-column="6" class="sortable-header">Pass Rate</th>
                                     </tr>
                                 </thead>
                                 <tbody id="leaderboardBody">
@@ -330,7 +375,7 @@
             </div>
 
             <!-- Chart View -->
-            <div class="tab-pane fade" id="chart" role="tabpanel">
+            <!-- <div class="tab-pane fade" id="chart" role="tabpanel">
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title mb-4">ASL Score Distribution</h5>
@@ -344,7 +389,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Comparison View -->
             <div class="tab-pane fade" id="comparison" role="tabpanel">
