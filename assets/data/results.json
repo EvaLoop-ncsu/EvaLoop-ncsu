@@ -16,7 +16,9 @@
             "rankBySemanticSimilarity": 1,
             "rankChange": "+5",
             "rankByRobustnessChange": "+5",
-            "rankBySemanticSimilarityChange": "+5"
+            "rankBySemanticSimilarityChange": "+5",
+            "rankByRobustnessScore": 1,
+            "rankBySemanticSimilarityScore": 1
         },
         {
             "rank": 2,
@@ -33,7 +35,9 @@
             "rankBySemanticSimilarity": 2,
             "rankChange": "+5",
             "rankByRobustnessChange": "+5",
-            "rankBySemanticSimilarityChange": "+5"
+            "rankBySemanticSimilarityChange": "+5",
+            "rankByRobustnessScore": 2,
+            "rankBySemanticSimilarityScore": 2
         },
         {
             "rank": 3,
@@ -50,7 +54,9 @@
             "rankBySemanticSimilarity": 3,
             "rankChange": "+2",
             "rankByRobustnessChange": "-5",
-            "rankBySemanticSimilarityChange": "+2"
+            "rankBySemanticSimilarityChange": "+2",
+            "rankByRobustnessScore": 10,
+            "rankBySemanticSimilarityScore": 3
         },
         {
             "rank": 4,
@@ -67,7 +73,9 @@
             "rankBySemanticSimilarity": 4,
             "rankChange": "-1",
             "rankByRobustnessChange": "-12",
-            "rankBySemanticSimilarityChange": "-1"
+            "rankBySemanticSimilarityChange": "-1",
+            "rankByRobustnessScore": 15,
+            "rankBySemanticSimilarityScore": 4
         },
         {
             "rank": 5,
@@ -84,7 +92,9 @@
             "rankBySemanticSimilarity": 5,
             "rankChange": "+4",
             "rankByRobustnessChange": "+6",
-            "rankBySemanticSimilarityChange": "+4"
+            "rankBySemanticSimilarityChange": "+4",
+            "rankByRobustnessScore": 3,
+            "rankBySemanticSimilarityScore": 5
         },
         {
             "rank": 6,
@@ -101,7 +111,9 @@
             "rankBySemanticSimilarity": 6,
             "rankChange": "-5",
             "rankByRobustnessChange": "-31",
-            "rankBySemanticSimilarityChange": "-5"
+            "rankBySemanticSimilarityChange": "-5",
+            "rankByRobustnessScore": 32,
+            "rankBySemanticSimilarityScore": 6
         },
         {
             "rank": 7,
@@ -118,7 +130,9 @@
             "rankBySemanticSimilarity": 7,
             "rankChange": "+1",
             "rankByRobustnessChange": "=",
-            "rankBySemanticSimilarityChange": "+1"
+            "rankBySemanticSimilarityChange": "+1",
+            "rankByRobustnessScore": 8,
+            "rankBySemanticSimilarityScore": 7
         },
         {
             "rank": 8,
@@ -135,7 +149,9 @@
             "rankBySemanticSimilarity": 8,
             "rankChange": "-6",
             "rankByRobustnessChange": "-31",
-            "rankBySemanticSimilarityChange": "-6"
+            "rankBySemanticSimilarityChange": "-6",
+            "rankByRobustnessScore": 33,
+            "rankBySemanticSimilarityScore": 8
         },
         {
             "rank": 9,
@@ -152,7 +168,9 @@
             "rankBySemanticSimilarity": 9,
             "rankChange": "-5",
             "rankByRobustnessChange": "-30",
-            "rankBySemanticSimilarityChange": "-5"
+            "rankBySemanticSimilarityChange": "-5",
+            "rankByRobustnessScore": 34,
+            "rankBySemanticSimilarityScore": 9
         },
         {
             "rank": 10,
@@ -169,7 +187,9 @@
             "rankBySemanticSimilarity": 10,
             "rankChange": "+1",
             "rankByRobustnessChange": "+7",
-            "rankBySemanticSimilarityChange": "+1"
+            "rankBySemanticSimilarityChange": "+1",
+            "rankByRobustnessScore": 4,
+            "rankBySemanticSimilarityScore": 10
         },
         {
             "rank": 11,
@@ -186,7 +206,9 @@
             "rankBySemanticSimilarity": 11,
             "rankChange": "+7",
             "rankByRobustnessChange": "+13",
-            "rankBySemanticSimilarityChange": "+7"
+            "rankBySemanticSimilarityChange": "+7",
+            "rankByRobustnessScore": 5,
+            "rankBySemanticSimilarityScore": 11
         },
         {
             "rank": 12,
@@ -203,7 +225,9 @@
             "rankBySemanticSimilarity": 12,
             "rankChange": "=",
             "rankByRobustnessChange": "-2",
-            "rankBySemanticSimilarityChange": "="
+            "rankBySemanticSimilarityChange": "=",
+            "rankByRobustnessScore": 14,
+            "rankBySemanticSimilarityScore": 12
         },
         {
             "rank": 13,
@@ -220,7 +244,9 @@
             "rankBySemanticSimilarity": 13,
             "rankChange": "+2",
             "rankByRobustnessChange": "+4",
-            "rankBySemanticSimilarityChange": "+2"
+            "rankBySemanticSimilarityChange": "+2",
+            "rankByRobustnessScore": 11,
+            "rankBySemanticSimilarityScore": 13
         },
         {
             "rank": 14,
@@ -237,7 +263,9 @@
             "rankBySemanticSimilarity": 14,
             "rankChange": "-1",
             "rankByRobustnessChange": "-7",
-            "rankBySemanticSimilarityChange": "-1"
+            "rankBySemanticSimilarityChange": "-1",
+            "rankByRobustnessScore": 20,
+            "rankBySemanticSimilarityScore": 14
         },
         {
             "rank": 15,
@@ -254,7 +282,9 @@
             "rankBySemanticSimilarity": 15,
             "rankChange": "-5",
             "rankByRobustnessChange": "-13",
-            "rankBySemanticSimilarityChange": "-5"
+            "rankBySemanticSimilarityChange": "-5",
+            "rankByRobustnessScore": 23,
+            "rankBySemanticSimilarityScore": 15
         },
         {
             "rank": 16,
@@ -271,7 +301,9 @@
             "rankBySemanticSimilarity": 16,
             "rankChange": "+3",
             "rankByRobustnessChange": "+6",
-            "rankBySemanticSimilarityChange": "+3"
+            "rankBySemanticSimilarityChange": "+3",
+            "rankByRobustnessScore": 13,
+            "rankBySemanticSimilarityScore": 16
         },
         {
             "rank": 17,
@@ -288,7 +320,9 @@
             "rankBySemanticSimilarity": 17,
             "rankChange": "+10",
             "rankByRobustnessChange": "+21",
-            "rankBySemanticSimilarityChange": "+10"
+            "rankBySemanticSimilarityChange": "+10",
+            "rankByRobustnessScore": 6,
+            "rankBySemanticSimilarityScore": 17
         },
         {
             "rank": 18,
@@ -305,7 +339,9 @@
             "rankBySemanticSimilarity": 18,
             "rankChange": "+2",
             "rankByRobustnessChange": "+4",
-            "rankBySemanticSimilarityChange": "+2"
+            "rankBySemanticSimilarityChange": "+2",
+            "rankByRobustnessScore": 16,
+            "rankBySemanticSimilarityScore": 18
         },
         {
             "rank": 19,
@@ -322,7 +358,9 @@
             "rankBySemanticSimilarity": 19,
             "rankChange": "+5",
             "rankByRobustnessChange": "+15",
-            "rankBySemanticSimilarityChange": "+5"
+            "rankBySemanticSimilarityChange": "+5",
+            "rankByRobustnessScore": 9,
+            "rankBySemanticSimilarityScore": 19
         },
         {
             "rank": 20,
@@ -339,7 +377,9 @@
             "rankBySemanticSimilarity": 20,
             "rankChange": "+8",
             "rankByRobustnessChange": "+21",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankBySemanticSimilarityChange": "+8",
+            "rankByRobustnessScore": 7,
+            "rankBySemanticSimilarityScore": 20
         },
         {
             "rank": 21,
@@ -356,7 +396,9 @@
             "rankBySemanticSimilarity": 21,
             "rankChange": "=",
             "rankByRobustnessChange": "+2",
-            "rankBySemanticSimilarityChange": "="
+            "rankBySemanticSimilarityChange": "=",
+            "rankByRobustnessScore": 19,
+            "rankBySemanticSimilarityScore": 21
         },
         {
             "rank": 22,
@@ -373,7 +415,9 @@
             "rankBySemanticSimilarity": 22,
             "rankChange": "-8",
             "rankByRobustnessChange": "-30",
-            "rankBySemanticSimilarityChange": "-8"
+            "rankBySemanticSimilarityChange": "-8",
+            "rankByRobustnessScore": 44,
+            "rankBySemanticSimilarityScore": 22
         },
         {
             "rank": 23,
@@ -390,7 +434,9 @@
             "rankBySemanticSimilarity": 23,
             "rankChange": "-7",
             "rankByRobustnessChange": "-26",
-            "rankBySemanticSimilarityChange": "-7"
+            "rankBySemanticSimilarityChange": "-7",
+            "rankByRobustnessScore": 42,
+            "rankBySemanticSimilarityScore": 23
         },
         {
             "rank": 24,
@@ -407,7 +453,9 @@
             "rankBySemanticSimilarity": 24,
             "rankChange": "+1",
             "rankByRobustnessChange": "-1",
-            "rankBySemanticSimilarityChange": "+1"
+            "rankBySemanticSimilarityChange": "+1",
+            "rankByRobustnessScore": 26,
+            "rankBySemanticSimilarityScore": 24
         },
         {
             "rank": 25,
@@ -424,7 +472,9 @@
             "rankBySemanticSimilarity": 25,
             "rankChange": "+7",
             "rankByRobustnessChange": "+14",
-            "rankBySemanticSimilarityChange": "+7"
+            "rankBySemanticSimilarityChange": "+7",
+            "rankByRobustnessScore": 18,
+            "rankBySemanticSimilarityScore": 25
         },
         {
             "rank": 26,
@@ -441,7 +491,9 @@
             "rankBySemanticSimilarity": 26,
             "rankChange": "+9",
             "rankByRobustnessChange": "+23",
-            "rankBySemanticSimilarityChange": "+9"
+            "rankBySemanticSimilarityChange": "+9",
+            "rankByRobustnessScore": 12,
+            "rankBySemanticSimilarityScore": 26
         },
         {
             "rank": 27,
@@ -458,7 +510,9 @@
             "rankBySemanticSimilarity": 27,
             "rankChange": "-5",
             "rankByRobustnessChange": "-18",
-            "rankBySemanticSimilarityChange": "-5"
+            "rankBySemanticSimilarityChange": "-5",
+            "rankByRobustnessScore": 40,
+            "rankBySemanticSimilarityScore": 27
         },
         {
             "rank": 28,
@@ -475,7 +529,9 @@
             "rankBySemanticSimilarity": 28,
             "rankChange": "+5",
             "rankByRobustnessChange": "+5",
-            "rankBySemanticSimilarityChange": "+5"
+            "rankBySemanticSimilarityChange": "+5",
+            "rankByRobustnessScore": 28,
+            "rankBySemanticSimilarityScore": 28
         },
         {
             "rank": 29,
@@ -492,7 +548,9 @@
             "rankBySemanticSimilarity": 29,
             "rankChange": "+8",
             "rankByRobustnessChange": "+20",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankBySemanticSimilarityChange": "+8",
+            "rankByRobustnessScore": 17,
+            "rankBySemanticSimilarityScore": 29
         },
         {
             "rank": 30,
@@ -509,7 +567,9 @@
             "rankBySemanticSimilarity": 30,
             "rankChange": "+4",
             "rankByRobustnessChange": "-2",
-            "rankBySemanticSimilarityChange": "+4"
+            "rankBySemanticSimilarityChange": "+4",
+            "rankByRobustnessScore": 36,
+            "rankBySemanticSimilarityScore": 30
         },
         {
             "rank": 31,
@@ -526,7 +586,9 @@
             "rankBySemanticSimilarity": 31,
             "rankChange": "-2",
             "rankByRobustnessChange": "-10",
-            "rankBySemanticSimilarityChange": "-2"
+            "rankBySemanticSimilarityChange": "-2",
+            "rankByRobustnessScore": 39,
+            "rankBySemanticSimilarityScore": 31
         },
         {
             "rank": 32,
@@ -543,7 +605,9 @@
             "rankBySemanticSimilarity": 32,
             "rankChange": "+4",
             "rankByRobustnessChange": "-1",
-            "rankBySemanticSimilarityChange": "+4"
+            "rankBySemanticSimilarityChange": "+4",
+            "rankByRobustnessScore": 37,
+            "rankBySemanticSimilarityScore": 32
         },
         {
             "rank": 33,
@@ -560,7 +624,9 @@
             "rankBySemanticSimilarity": 33,
             "rankChange": "-16",
             "rankByRobustnessChange": "-38",
-            "rankBySemanticSimilarityChange": "-16"
+            "rankBySemanticSimilarityChange": "-16",
+            "rankByRobustnessScore": 55,
+            "rankBySemanticSimilarityScore": 33
         },
         {
             "rank": 34,
@@ -577,7 +643,9 @@
             "rankBySemanticSimilarity": 34,
             "rankChange": "+7",
             "rankByRobustnessChange": "+16",
-            "rankBySemanticSimilarityChange": "+7"
+            "rankBySemanticSimilarityChange": "+7",
+            "rankByRobustnessScore": 25,
+            "rankBySemanticSimilarityScore": 34
         },
         {
             "rank": 35,
@@ -594,7 +662,9 @@
             "rankBySemanticSimilarity": 35,
             "rankChange": "-5",
             "rankByRobustnessChange": "-18",
-            "rankBySemanticSimilarityChange": "-5"
+            "rankBySemanticSimilarityChange": "-5",
+            "rankByRobustnessScore": 48,
+            "rankBySemanticSimilarityScore": 35
         },
         {
             "rank": 36,
@@ -611,7 +681,9 @@
             "rankBySemanticSimilarity": 36,
             "rankChange": "+7",
             "rankByRobustnessChange": "+22",
-            "rankBySemanticSimilarityChange": "+7"
+            "rankBySemanticSimilarityChange": "+7",
+            "rankByRobustnessScore": 21,
+            "rankBySemanticSimilarityScore": 36
         },
         {
             "rank": 37,
@@ -628,7 +700,9 @@
             "rankBySemanticSimilarity": 37,
             "rankChange": "-11",
             "rankByRobustnessChange": "-24",
-            "rankBySemanticSimilarityChange": "-11"
+            "rankBySemanticSimilarityChange": "-11",
+            "rankByRobustnessScore": 50,
+            "rankBySemanticSimilarityScore": 37
         },
         {
             "rank": 38,
@@ -645,7 +719,9 @@
             "rankBySemanticSimilarity": 38,
             "rankChange": "=",
             "rankByRobustnessChange": "-7",
-            "rankBySemanticSimilarityChange": "="
+            "rankBySemanticSimilarityChange": "=",
+            "rankByRobustnessScore": 45,
+            "rankBySemanticSimilarityScore": 38
         },
         {
             "rank": 39,
@@ -662,7 +738,9 @@
             "rankBySemanticSimilarity": 39,
             "rankChange": "-8",
             "rankByRobustnessChange": "-21",
-            "rankBySemanticSimilarityChange": "-8"
+            "rankBySemanticSimilarityChange": "-8",
+            "rankByRobustnessScore": 52,
+            "rankBySemanticSimilarityScore": 39
         },
         {
             "rank": 40,
@@ -674,12 +752,14 @@
             "robustnessScore": 9.028,
             "passDrop": -25,
             "semanticSimilarityScore": 6.017,
-            "rankBySuccessRate": 48,
+            "rankBySuccessRate": 47,
             "rankByRobustness": 22,
             "rankBySemanticSimilarity": 40,
-            "rankChange": "+8",
-            "rankByRobustnessChange": "+26",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankChange": "+7",
+            "rankByRobustnessChange": "+25",
+            "rankBySemanticSimilarityChange": "+7",
+            "rankByRobustnessScore": 22,
+            "rankBySemanticSimilarityScore": 40
         },
         {
             "rank": 41,
@@ -691,12 +771,14 @@
             "robustnessScore": 8.947,
             "passDrop": -28,
             "semanticSimilarityScore": 5.986,
-            "rankBySuccessRate": 47,
+            "rankBySuccessRate": 46,
             "rankByRobustness": 35,
             "rankBySemanticSimilarity": 41,
-            "rankChange": "+6",
-            "rankByRobustnessChange": "+12",
-            "rankBySemanticSimilarityChange": "+6"
+            "rankChange": "+5",
+            "rankByRobustnessChange": "+11",
+            "rankBySemanticSimilarityChange": "+5",
+            "rankByRobustnessScore": 35,
+            "rankBySemanticSimilarityScore": 41
         },
         {
             "rank": 42,
@@ -708,12 +790,14 @@
             "robustnessScore": 8.994,
             "passDrop": -26,
             "semanticSimilarityScore": 5.946,
-            "rankBySuccessRate": 49,
+            "rankBySuccessRate": 48,
             "rankByRobustness": 27,
             "rankBySemanticSimilarity": 42,
-            "rankChange": "+7",
-            "rankByRobustnessChange": "+22",
-            "rankBySemanticSimilarityChange": "+7"
+            "rankChange": "+6",
+            "rankByRobustnessChange": "+21",
+            "rankBySemanticSimilarityChange": "+6",
+            "rankByRobustnessScore": 27,
+            "rankBySemanticSimilarityScore": 42
         },
         {
             "rank": 43,
@@ -730,7 +814,9 @@
             "rankBySemanticSimilarity": 43,
             "rankChange": "+1",
             "rankByRobustnessChange": "+3",
-            "rankBySemanticSimilarityChange": "+1"
+            "rankBySemanticSimilarityChange": "+1",
+            "rankByRobustnessScore": 41,
+            "rankBySemanticSimilarityScore": 43
         },
         {
             "rank": 44,
@@ -747,7 +833,9 @@
             "rankBySemanticSimilarity": 44,
             "rankChange": "-4",
             "rankByRobustnessChange": "-9",
-            "rankBySemanticSimilarityChange": "-4"
+            "rankBySemanticSimilarityChange": "-4",
+            "rankByRobustnessScore": 49,
+            "rankBySemanticSimilarityScore": 44
         },
         {
             "rank": 45,
@@ -764,7 +852,9 @@
             "rankBySemanticSimilarity": 45,
             "rankChange": "-22",
             "rankByRobustnessChange": "-35",
-            "rankBySemanticSimilarityChange": "-22"
+            "rankBySemanticSimilarityChange": "-22",
+            "rankByRobustnessScore": 58,
+            "rankBySemanticSimilarityScore": 45
         },
         {
             "rank": 46,
@@ -781,7 +871,9 @@
             "rankBySemanticSimilarity": 46,
             "rankChange": "-7",
             "rankByRobustnessChange": "-14",
-            "rankBySemanticSimilarityChange": "-7"
+            "rankBySemanticSimilarityChange": "-7",
+            "rankByRobustnessScore": 53,
+            "rankBySemanticSimilarityScore": 46
         },
         {
             "rank": 47,
@@ -793,12 +885,14 @@
             "robustnessScore": 8.899,
             "passDrop": -28,
             "semanticSimilarityScore": 5.766,
-            "rankBySuccessRate": 50,
+            "rankBySuccessRate": 49,
             "rankByRobustness": 38,
             "rankBySemanticSimilarity": 47,
-            "rankChange": "+3",
-            "rankByRobustnessChange": "+12",
-            "rankBySemanticSimilarityChange": "+3"
+            "rankChange": "+2",
+            "rankByRobustnessChange": "+11",
+            "rankBySemanticSimilarityChange": "+2",
+            "rankByRobustnessScore": 38,
+            "rankBySemanticSimilarityScore": 47
         },
         {
             "rank": 48,
@@ -810,12 +904,14 @@
             "robustnessScore": 9.017,
             "passDrop": -24,
             "semanticSimilarityScore": 5.7,
-            "rankBySuccessRate": 54,
+            "rankBySuccessRate": 53,
             "rankByRobustness": 24,
             "rankBySemanticSimilarity": 48,
-            "rankChange": "+6",
-            "rankByRobustnessChange": "+30",
-            "rankBySemanticSimilarityChange": "+6"
+            "rankChange": "+5",
+            "rankByRobustnessChange": "+29",
+            "rankBySemanticSimilarityChange": "+5",
+            "rankByRobustnessScore": 24,
+            "rankBySemanticSimilarityScore": 48
         },
         {
             "rank": 49,
@@ -827,12 +923,14 @@
             "robustnessScore": 8.748,
             "passDrop": -32,
             "semanticSimilarityScore": 5.575,
-            "rankBySuccessRate": 53,
+            "rankBySuccessRate": 52,
             "rankByRobustness": 43,
             "rankBySemanticSimilarity": 49,
-            "rankChange": "+4",
-            "rankByRobustnessChange": "+10",
-            "rankBySemanticSimilarityChange": "+4"
+            "rankChange": "+3",
+            "rankByRobustnessChange": "+9",
+            "rankBySemanticSimilarityChange": "+3",
+            "rankByRobustnessScore": 43,
+            "rankBySemanticSimilarityScore": 49
         },
         {
             "rank": 50,
@@ -844,12 +942,14 @@
             "robustnessScore": 8.987,
             "passDrop": -24.0,
             "semanticSimilarityScore": 5.443,
-            "rankBySuccessRate": 58,
+            "rankBySuccessRate": 57,
             "rankByRobustness": 29,
             "rankBySemanticSimilarity": 50,
-            "rankChange": "+8",
-            "rankByRobustnessChange": "+29",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankChange": "+7",
+            "rankByRobustnessChange": "+28",
+            "rankBySemanticSimilarityChange": "+7",
+            "rankByRobustnessScore": 29,
+            "rankBySemanticSimilarityScore": 50
         },
         {
             "rank": 51,
@@ -861,12 +961,14 @@
             "robustnessScore": 8.444,
             "passDrop": -44.4,
             "semanticSimilarityScore": 5.423,
-            "rankBySuccessRate": 51,
+            "rankBySuccessRate": 50,
             "rankByRobustness": 51,
             "rankBySemanticSimilarity": 51,
-            "rankChange": "=",
-            "rankByRobustnessChange": "=",
-            "rankBySemanticSimilarityChange": "="
+            "rankChange": "-1",
+            "rankByRobustnessChange": "-1",
+            "rankBySemanticSimilarityChange": "-1",
+            "rankByRobustnessScore": 51,
+            "rankBySemanticSimilarityScore": 51
         },
         {
             "rank": 52,
@@ -878,12 +980,14 @@
             "robustnessScore": 8.984,
             "passDrop": -25,
             "semanticSimilarityScore": 5.319,
-            "rankBySuccessRate": 61,
+            "rankBySuccessRate": 60,
             "rankByRobustness": 31,
             "rankBySemanticSimilarity": 52,
-            "rankChange": "+9",
-            "rankByRobustnessChange": "+30",
-            "rankBySemanticSimilarityChange": "+9"
+            "rankChange": "+8",
+            "rankByRobustnessChange": "+29",
+            "rankBySemanticSimilarityChange": "+8",
+            "rankByRobustnessScore": 31,
+            "rankBySemanticSimilarityScore": 52
         },
         {
             "rank": 53,
@@ -900,7 +1004,9 @@
             "rankBySemanticSimilarity": 53,
             "rankChange": "-11",
             "rankByRobustnessChange": "-22",
-            "rankBySemanticSimilarityChange": "-11"
+            "rankBySemanticSimilarityChange": "-11",
+            "rankByRobustnessScore": 63,
+            "rankBySemanticSimilarityScore": 53
         },
         {
             "rank": 54,
@@ -912,12 +1018,14 @@
             "robustnessScore": 8.642,
             "passDrop": -30,
             "semanticSimilarityScore": 4.844,
-            "rankBySuccessRate": 66,
+            "rankBySuccessRate": 64,
             "rankByRobustness": 46,
             "rankBySemanticSimilarity": 54,
-            "rankChange": "+12",
-            "rankByRobustnessChange": "+20",
-            "rankBySemanticSimilarityChange": "+12"
+            "rankChange": "+10",
+            "rankByRobustnessChange": "+18",
+            "rankBySemanticSimilarityChange": "+10",
+            "rankByRobustnessScore": 46,
+            "rankBySemanticSimilarityScore": 54
         },
         {
             "rank": 55,
@@ -929,12 +1037,14 @@
             "robustnessScore": 7.65,
             "passDrop": -59,
             "semanticSimilarityScore": 4.713,
-            "rankBySuccessRate": 57,
+            "rankBySuccessRate": 56,
             "rankByRobustness": 60,
             "rankBySemanticSimilarity": 55,
-            "rankChange": "+2",
-            "rankByRobustnessChange": "-3",
-            "rankBySemanticSimilarityChange": "+2"
+            "rankChange": "+1",
+            "rankByRobustnessChange": "-4",
+            "rankBySemanticSimilarityChange": "+1",
+            "rankByRobustnessScore": 59,
+            "rankBySemanticSimilarityScore": 55
         },
         {
             "rank": 56,
@@ -946,12 +1056,14 @@
             "robustnessScore": 8.987,
             "passDrop": -22,
             "semanticSimilarityScore": 4.706,
-            "rankBySuccessRate": 69,
+            "rankBySuccessRate": 66,
             "rankByRobustness": 30,
             "rankBySemanticSimilarity": 56,
-            "rankChange": "+13",
-            "rankByRobustnessChange": "+39",
-            "rankBySemanticSimilarityChange": "+13"
+            "rankChange": "+10",
+            "rankByRobustnessChange": "+36",
+            "rankBySemanticSimilarityChange": "+10",
+            "rankByRobustnessScore": 30,
+            "rankBySemanticSimilarityScore": 56
         },
         {
             "rank": 57,
@@ -963,12 +1075,14 @@
             "robustnessScore": 8.282,
             "passDrop": -38,
             "semanticSimilarityScore": 4.687,
-            "rankBySuccessRate": 65,
+            "rankBySuccessRate": 63,
             "rankByRobustness": 54,
             "rankBySemanticSimilarity": 57,
-            "rankChange": "+8",
-            "rankByRobustnessChange": "+11",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankChange": "+6",
+            "rankByRobustnessChange": "+9",
+            "rankBySemanticSimilarityChange": "+6",
+            "rankByRobustnessScore": 54,
+            "rankBySemanticSimilarityScore": 57
         },
         {
             "rank": 58,
@@ -980,12 +1094,14 @@
             "robustnessScore": 8.142,
             "passDrop": -44,
             "semanticSimilarityScore": 4.521,
-            "rankBySuccessRate": 67,
+            "rankBySuccessRate": 65,
             "rankByRobustness": 57,
             "rankBySemanticSimilarity": 58,
-            "rankChange": "+9",
-            "rankByRobustnessChange": "+10",
-            "rankBySemanticSimilarityChange": "+9"
+            "rankChange": "+7",
+            "rankByRobustnessChange": "+8",
+            "rankBySemanticSimilarityChange": "+7",
+            "rankByRobustnessScore": 57,
+            "rankBySemanticSimilarityScore": 58
         },
         {
             "rank": 59,
@@ -997,12 +1113,14 @@
             "robustnessScore": 7.548,
             "passDrop": -55,
             "semanticSimilarityScore": 4.31,
-            "rankBySuccessRate": 63,
+            "rankBySuccessRate": 62,
             "rankByRobustness": 61,
             "rankBySemanticSimilarity": 59,
-            "rankChange": "+4",
-            "rankByRobustnessChange": "+2",
-            "rankBySemanticSimilarityChange": "+4"
+            "rankChange": "+3",
+            "rankByRobustnessChange": "+1",
+            "rankBySemanticSimilarityChange": "+3",
+            "rankByRobustnessScore": 60,
+            "rankBySemanticSimilarityScore": 59
         },
         {
             "rank": 60,
@@ -1014,12 +1132,14 @@
             "robustnessScore": 8.191,
             "passDrop": -35,
             "semanticSimilarityScore": 4.008,
-            "rankBySuccessRate": 73,
+            "rankBySuccessRate": 69,
             "rankByRobustness": 56,
             "rankBySemanticSimilarity": 60,
-            "rankChange": "+13",
-            "rankByRobustnessChange": "+17",
-            "rankBySemanticSimilarityChange": "+13"
+            "rankChange": "+9",
+            "rankByRobustnessChange": "+13",
+            "rankBySemanticSimilarityChange": "+9",
+            "rankByRobustnessScore": 56,
+            "rankBySemanticSimilarityScore": 60
         },
         {
             "rank": 61,
@@ -1031,12 +1151,14 @@
             "robustnessScore": 6.313,
             "passDrop": -110,
             "semanticSimilarityScore": 3.933,
-            "rankBySuccessRate": 55,
+            "rankBySuccessRate": 54,
             "rankByRobustness": 70,
             "rankBySemanticSimilarity": 61,
-            "rankChange": "-6",
-            "rankByRobustnessChange": "-15",
-            "rankBySemanticSimilarityChange": "-6"
+            "rankChange": "-7",
+            "rankByRobustnessChange": "-16",
+            "rankBySemanticSimilarityChange": "-7",
+            "rankByRobustnessScore": 67,
+            "rankBySemanticSimilarityScore": 61
         },
         {
             "rank": 62,
@@ -1048,12 +1170,14 @@
             "robustnessScore": 8.632,
             "passDrop": -21,
             "semanticSimilarityScore": 3.424,
-            "rankBySuccessRate": 78,
+            "rankBySuccessRate": 72,
             "rankByRobustness": 47,
             "rankBySemanticSimilarity": 62,
-            "rankChange": "+16",
-            "rankByRobustnessChange": "+31",
-            "rankBySemanticSimilarityChange": "+16"
+            "rankChange": "+10",
+            "rankByRobustnessChange": "+25",
+            "rankBySemanticSimilarityChange": "+10",
+            "rankByRobustnessScore": 47,
+            "rankBySemanticSimilarityScore": 62
         },
         {
             "rank": 63,
@@ -1065,12 +1189,14 @@
             "robustnessScore": 6.408,
             "passDrop": -77,
             "semanticSimilarityScore": 3.28,
-            "rankBySuccessRate": 70,
+            "rankBySuccessRate": 67,
             "rankByRobustness": 68,
             "rankBySemanticSimilarity": 63,
-            "rankChange": "+7",
-            "rankByRobustnessChange": "+2",
-            "rankBySemanticSimilarityChange": "+7"
+            "rankChange": "+4",
+            "rankByRobustnessChange": "-1",
+            "rankBySemanticSimilarityChange": "+4",
+            "rankByRobustnessScore": 66,
+            "rankBySemanticSimilarityScore": 63
         },
         {
             "rank": 64,
@@ -1082,12 +1208,14 @@
             "robustnessScore": 5.115,
             "passDrop": -131,
             "semanticSimilarityScore": 3.181,
-            "rankBySuccessRate": 56,
+            "rankBySuccessRate": 55,
             "rankByRobustness": 73,
             "rankBySemanticSimilarity": 64,
-            "rankChange": "-8",
-            "rankByRobustnessChange": "-17",
-            "rankBySemanticSimilarityChange": "-8"
+            "rankChange": "-9",
+            "rankByRobustnessChange": "-18",
+            "rankBySemanticSimilarityChange": "-9",
+            "rankByRobustnessScore": 70,
+            "rankBySemanticSimilarityScore": 64
         },
         {
             "rank": 65,
@@ -1104,7 +1232,9 @@
             "rankBySemanticSimilarity": 66,
             "rankChange": "-20",
             "rankByRobustnessChange": "-31",
-            "rankBySemanticSimilarityChange": "-21"
+            "rankBySemanticSimilarityChange": "-21",
+            "rankByRobustnessScore": 73,
+            "rankBySemanticSimilarityScore": 66
         },
         {
             "rank": 66,
@@ -1116,12 +1246,14 @@
             "robustnessScore": 7.396,
             "passDrop": -43,
             "semanticSimilarityScore": 3.129,
-            "rankBySuccessRate": 76,
+            "rankBySuccessRate": 71,
             "rankByRobustness": 63,
             "rankBySemanticSimilarity": 65,
-            "rankChange": "+10",
-            "rankByRobustnessChange": "+13",
-            "rankBySemanticSimilarityChange": "+11"
+            "rankChange": "+5",
+            "rankByRobustnessChange": "+8",
+            "rankBySemanticSimilarityChange": "+6",
+            "rankByRobustnessScore": 62,
+            "rankBySemanticSimilarityScore": 65
         },
         {
             "rank": 67,
@@ -1133,12 +1265,14 @@
             "robustnessScore": 6.638,
             "passDrop": -70,
             "semanticSimilarityScore": 3.106,
-            "rankBySuccessRate": 75,
+            "rankBySuccessRate": 70,
             "rankByRobustness": 65,
             "rankBySemanticSimilarity": 67,
-            "rankChange": "+8",
-            "rankByRobustnessChange": "+10",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankChange": "+3",
+            "rankByRobustnessChange": "+5",
+            "rankBySemanticSimilarityChange": "+3",
+            "rankByRobustnessScore": 64,
+            "rankBySemanticSimilarityScore": 67
         },
         {
             "rank": 68,
@@ -1150,12 +1284,14 @@
             "robustnessScore": 5.026,
             "passDrop": -124,
             "semanticSimilarityScore": 3.012,
-            "rankBySuccessRate": 59,
+            "rankBySuccessRate": 58,
             "rankByRobustness": 74,
             "rankBySemanticSimilarity": 68,
-            "rankChange": "-9",
-            "rankByRobustnessChange": "-15",
-            "rankBySemanticSimilarityChange": "-9"
+            "rankChange": "-10",
+            "rankByRobustnessChange": "-16",
+            "rankBySemanticSimilarityChange": "-10",
+            "rankByRobustnessScore": 71,
+            "rankBySemanticSimilarityScore": 68
         },
         {
             "rank": 69,
@@ -1167,12 +1303,14 @@
             "robustnessScore": 7.504,
             "passDrop": -38,
             "semanticSimilarityScore": 2.895,
-            "rankBySuccessRate": 80,
+            "rankBySuccessRate": 74,
             "rankByRobustness": 62,
             "rankBySemanticSimilarity": 69,
-            "rankChange": "+11",
-            "rankByRobustnessChange": "+18",
-            "rankBySemanticSimilarityChange": "+11"
+            "rankChange": "+5",
+            "rankByRobustnessChange": "+12",
+            "rankBySemanticSimilarityChange": "+5",
+            "rankByRobustnessScore": 61,
+            "rankBySemanticSimilarityScore": 69
         },
         {
             "rank": 70,
@@ -1184,12 +1322,14 @@
             "robustnessScore": 4.519,
             "passDrop": -142.2,
             "semanticSimilarityScore": 2.64,
-            "rankBySuccessRate": 62,
+            "rankBySuccessRate": 61,
             "rankByRobustness": 78,
             "rankBySemanticSimilarity": 70,
-            "rankChange": "-8",
-            "rankByRobustnessChange": "-16",
-            "rankBySemanticSimilarityChange": "-8"
+            "rankChange": "-9",
+            "rankByRobustnessChange": "-17",
+            "rankBySemanticSimilarityChange": "-9",
+            "rankByRobustnessScore": 74,
+            "rankBySemanticSimilarityScore": 70
         },
         {
             "rank": 71,
@@ -1201,12 +1341,14 @@
             "robustnessScore": 6.492,
             "passDrop": -50,
             "semanticSimilarityScore": 2.368,
-            "rankBySuccessRate": 81,
+            "rankBySuccessRate": 75,
             "rankByRobustness": 67,
             "rankBySemanticSimilarity": 71,
-            "rankChange": "+10",
-            "rankByRobustnessChange": "+14",
-            "rankBySemanticSimilarityChange": "+10"
+            "rankChange": "+4",
+            "rankByRobustnessChange": "+8",
+            "rankBySemanticSimilarityChange": "+4",
+            "rankByRobustnessScore": 65,
+            "rankBySemanticSimilarityScore": 71
         },
         {
             "rank": 72,
@@ -1218,12 +1360,14 @@
             "robustnessScore": 3.921,
             "passDrop": -151,
             "semanticSimilarityScore": 2.352,
-            "rankBySuccessRate": 60,
+            "rankBySuccessRate": 59,
             "rankByRobustness": 80,
             "rankBySemanticSimilarity": 72,
-            "rankChange": "-12",
-            "rankByRobustnessChange": "-20",
-            "rankBySemanticSimilarityChange": "-12"
+            "rankChange": "-13",
+            "rankByRobustnessChange": "-21",
+            "rankBySemanticSimilarityChange": "-13",
+            "rankByRobustnessScore": 76,
+            "rankBySemanticSimilarityScore": 72
         },
         {
             "rank": 73,
@@ -1235,12 +1379,14 @@
             "robustnessScore": 5.287,
             "passDrop": -80,
             "semanticSimilarityScore": 2.092,
-            "rankBySuccessRate": 79,
+            "rankBySuccessRate": 73,
             "rankByRobustness": 72,
             "rankBySemanticSimilarity": 73,
-            "rankChange": "+6",
-            "rankByRobustnessChange": "+7",
-            "rankBySemanticSimilarityChange": "+6"
+            "rankChange": "=",
+            "rankByRobustnessChange": "+1",
+            "rankBySemanticSimilarityChange": "=",
+            "rankByRobustnessScore": 69,
+            "rankBySemanticSimilarityScore": 73
         },
         {
             "rank": 74,
@@ -1252,12 +1398,14 @@
             "robustnessScore": 3.06,
             "passDrop": -180,
             "semanticSimilarityScore": 1.959,
-            "rankBySuccessRate": 52,
+            "rankBySuccessRate": 51,
             "rankByRobustness": 82,
             "rankBySemanticSimilarity": 74,
-            "rankChange": "-22",
-            "rankByRobustnessChange": "-30",
-            "rankBySemanticSimilarityChange": "-22"
+            "rankChange": "-23",
+            "rankByRobustnessChange": "-31",
+            "rankBySemanticSimilarityChange": "-23",
+            "rankByRobustnessScore": 78,
+            "rankBySemanticSimilarityScore": 74
         },
         {
             "rank": 75,
@@ -1269,12 +1417,14 @@
             "robustnessScore": 3.663,
             "passDrop": -139,
             "semanticSimilarityScore": 1.847,
-            "rankBySuccessRate": 72,
+            "rankBySuccessRate": 68,
             "rankByRobustness": 81,
             "rankBySemanticSimilarity": 75,
-            "rankChange": "-3",
-            "rankByRobustnessChange": "-9",
-            "rankBySemanticSimilarityChange": "-3"
+            "rankChange": "-7",
+            "rankByRobustnessChange": "-13",
+            "rankBySemanticSimilarityChange": "-7",
+            "rankByRobustnessScore": 77,
+            "rankBySemanticSimilarityScore": 75
         },
         {
             "rank": 76,
@@ -1286,12 +1436,14 @@
             "robustnessScore": 5.638,
             "passDrop": -53,
             "semanticSimilarityScore": 1.636,
-            "rankBySuccessRate": 84,
+            "rankBySuccessRate": 76,
             "rankByRobustness": 71,
             "rankBySemanticSimilarity": 76,
-            "rankChange": "+8",
-            "rankByRobustnessChange": "+13",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankChange": "=",
+            "rankByRobustnessChange": "+5",
+            "rankBySemanticSimilarityChange": "=",
+            "rankByRobustnessScore": 68,
+            "rankBySemanticSimilarityScore": 76
         },
         {
             "rank": 77,
@@ -1303,15 +1455,17 @@
             "robustnessScore": 4.649,
             "passDrop": -65,
             "semanticSimilarityScore": 1.34,
-            "rankBySuccessRate": 85,
+            "rankBySuccessRate": 77,
             "rankByRobustness": 75,
             "rankBySemanticSimilarity": 77,
-            "rankChange": "+8",
-            "rankByRobustnessChange": "+10",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankChange": "=",
+            "rankByRobustnessChange": "+2",
+            "rankBySemanticSimilarityChange": "=",
+            "rankByRobustnessScore": 72,
+            "rankBySemanticSimilarityScore": 77
         },
         {
-            "rank": 79,
+            "rank": 78,
             "name": "deepseek-coder-6.7b-instruct",
             "organization": "DeepSeek",
             "link": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct",
@@ -1320,12 +1474,14 @@
             "robustnessScore": 4.168,
             "passDrop": -62,
             "semanticSimilarityScore": 1.107,
-            "rankBySuccessRate": 87,
+            "rankBySuccessRate": 78,
             "rankByRobustness": 79,
             "rankBySemanticSimilarity": 79,
-            "rankChange": "+8",
-            "rankByRobustnessChange": "+8",
-            "rankBySemanticSimilarityChange": "+8"
+            "rankChange": "=",
+            "rankByRobustnessChange": "-1",
+            "rankBySemanticSimilarityChange": "-1",
+            "rankByRobustnessScore": 75,
+            "rankBySemanticSimilarityScore": 78
         }
     ]
 }
